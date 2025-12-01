@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1f77b4;
+  --success: #28a745;
+  --warning: #ffc107;
+  --danger: #dc3545;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.project-tile {
+  @apply p-5 rounded-lg border-2 border-gray-200 mb-5 bg-gray-50 transition-transform duration-200;
+}
+
+.project-tile:hover {
+  @apply transform -translate-y-1 shadow-lg;
+}
+
+.metric-card {
+  @apply bg-white p-4 rounded-lg border-l-4 border-primary my-3;
+}
+
+.notification-box {
+  @apply p-4 rounded-lg my-3 border-l-4 border-warning bg-yellow-50 text-black;
+}
+
+.category-header {
+  @apply text-white p-4 rounded-lg my-5 text-xl font-bold;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+.delta-positive {
+  @apply text-success font-bold;
+}

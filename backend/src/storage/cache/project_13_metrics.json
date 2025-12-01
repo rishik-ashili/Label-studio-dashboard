@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-11-07T09:29:39.308802",
+  "metrics": {
+    "filling": {
+      "image_count": 326,
+      "annotation_count": 1657
+    },
+    "pulp": {
+      "image_count": 339,
+      "annotation_count": 1626
+    },
+    "bone": {
+      "image_count": 340,
+      "annotation_count": 2024
+    },
+    "cavity": {
+      "image_count": 340,
+      "annotation_count": 4831
+    },
+    "_summary": {
+      "total_images": 1099,
+      "annotated_images": 340,
+      "unannotated_images": 759
+    }
+  }
+}

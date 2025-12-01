@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-11-07T09:28:47.215352",
+  "metrics": {
+    "enamel": {
+      "image_count": 199,
+      "annotation_count": 205
+    },
+    "lesion": {
+      "image_count": 99,
+      "annotation_count": 102
+    },
+    "_summary": {
+      "total_images": 200,
+      "annotated_images": 200,
+      "unannotated_images": 0
+    }
+  }
+}

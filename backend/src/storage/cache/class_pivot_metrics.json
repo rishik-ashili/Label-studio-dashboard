@@ -1,0 +1,360 @@
+{
+  "Non-Pathology": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T03:00:48.032066",
+        "metrics": {
+          "filling": {
+            "OPG": {
+              "images": 2553,
+              "annotations": 3540
+            },
+            "Bitewing": {
+              "images": 960,
+              "annotations": 4106
+            },
+            "IOPA": {
+              "images": 189,
+              "annotations": 415
+            }
+          },
+          "crown": {
+            "OPG": {
+              "images": 4,
+              "annotations": 5
+            }
+          },
+          "rootcanal": {
+            "OPG": {
+              "images": 5395,
+              "annotations": 11916
+            },
+            "IOPA": {
+              "images": 244,
+              "annotations": 665
+            }
+          }
+        }
+      }
+    ]
+  },
+  "Tooth Parts": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T03:00:48.977809",
+        "metrics": {
+          "enamel": {
+            "OPG": {
+              "images": 680,
+              "annotations": 702
+            }
+          },
+          "pulp": {
+            "OPG": {
+              "images": 7115,
+              "annotations": 14657
+            },
+            "Bitewing": {
+              "images": 1095,
+              "annotations": 5963
+            },
+            "IOPA": {
+              "images": 382,
+              "annotations": 843
+            }
+          },
+          "bone": {
+            "Bitewing": {
+              "images": 1098,
+              "annotations": 7140
+            },
+            "OPG": {
+              "images": 8987,
+              "annotations": 16592
+            },
+            "IOPA": {
+              "images": 445,
+              "annotations": 1403
+            }
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T03:00:49.839820",
+        "metrics": {
+          "enamel": {
+            "OPG": {
+              "images": 680,
+              "annotations": 702
+            }
+          },
+          "pulp": {
+            "OPG": {
+              "images": 7115,
+              "annotations": 14657
+            },
+            "Bitewing": {
+              "images": 1095,
+              "annotations": 5963
+            },
+            "IOPA": {
+              "images": 382,
+              "annotations": 843
+            }
+          },
+          "bone": {
+            "Bitewing": {
+              "images": 1098,
+              "annotations": 7140
+            },
+            "OPG": {
+              "images": 8987,
+              "annotations": 16592
+            },
+            "IOPA": {
+              "images": 445,
+              "annotations": 1403
+            }
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T03:00:49.859143",
+        "metrics": {
+          "enamel": {
+            "OPG": {
+              "images": 680,
+              "annotations": 702
+            }
+          },
+          "pulp": {
+            "OPG": {
+              "images": 7115,
+              "annotations": 14657
+            },
+            "Bitewing": {
+              "images": 1095,
+              "annotations": 5963
+            },
+            "IOPA": {
+              "images": 382,
+              "annotations": 843
+            }
+          },
+          "bone": {
+            "Bitewing": {
+              "images": 1098,
+              "annotations": 7140
+            },
+            "OPG": {
+              "images": 8987,
+              "annotations": 16592
+            },
+            "IOPA": {
+              "images": 445,
+              "annotations": 1403
+            }
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T03:00:50.644380",
+        "metrics": {
+          "enamel": {
+            "OPG": {
+              "images": 680,
+              "annotations": 702
+            }
+          },
+          "pulp": {
+            "OPG": {
+              "images": 7115,
+              "annotations": 14657
+            },
+            "Bitewing": {
+              "images": 1095,
+              "annotations": 5963
+            },
+            "IOPA": {
+              "images": 382,
+              "annotations": 843
+            }
+          },
+          "bone": {
+            "Bitewing": {
+              "images": 1098,
+              "annotations": 7140
+            },
+            "OPG": {
+              "images": 8987,
+              "annotations": 16592
+            },
+            "IOPA": {
+              "images": 445,
+              "annotations": 1403
+            }
+          }
+        }
+      }
+    ]
+  },
+  "Others": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T03:00:50.559590",
+        "metrics": {
+          "root canal": {
+            "OPG": {
+              "images": 8,
+              "annotations": 8
+            }
+          },
+          "impacted tooth": {
+            "OPG": {
+              "images": 5,
+              "annotations": 6
+            }
+          },
+          "attrition": {
+            "IOPA": {
+              "images": 165,
+              "annotations": 277
+            },
+            "OPG": {
+              "images": 1,
+              "annotations": 1
+            }
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T03:00:51.344145",
+        "metrics": {
+          "root canal": {
+            "OPG": {
+              "images": 8,
+              "annotations": 8
+            }
+          },
+          "impacted tooth": {
+            "OPG": {
+              "images": 5,
+              "annotations": 6
+            }
+          },
+          "attrition": {
+            "IOPA": {
+              "images": 165,
+              "annotations": 277
+            },
+            "OPG": {
+              "images": 1,
+              "annotations": 1
+            }
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T03:00:51.599848",
+        "metrics": {
+          "root canal": {
+            "OPG": {
+              "images": 8,
+              "annotations": 8
+            }
+          },
+          "impacted tooth": {
+            "OPG": {
+              "images": 5,
+              "annotations": 6
+            }
+          },
+          "attrition": {
+            "IOPA": {
+              "images": 165,
+              "annotations": 277
+            },
+            "OPG": {
+              "images": 1,
+              "annotations": 1
+            }
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T03:00:52.099545",
+        "metrics": {
+          "root canal": {
+            "OPG": {
+              "images": 8,
+              "annotations": 8
+            }
+          },
+          "impacted tooth": {
+            "OPG": {
+              "images": 5,
+              "annotations": 6
+            }
+          },
+          "attrition": {
+            "IOPA": {
+              "images": 165,
+              "annotations": 277
+            },
+            "OPG": {
+              "images": 1,
+              "annotations": 1
+            }
+          }
+        }
+      }
+    ]
+  },
+  "Pathology": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T15:38:00.585205",
+        "metrics": {
+          "cavity": {
+            "OPG": {
+              "images": 7196,
+              "annotations": 13503
+            },
+            "Bitewing": {
+              "images": 1097,
+              "annotations": 14578
+            },
+            "IOPA": {
+              "images": 3673,
+              "annotations": 13275
+            }
+          },
+          "lesion": {
+            "OPG": {
+              "images": 3132,
+              "annotations": 4836
+            },
+            "Bitewing": {
+              "images": 1,
+              "annotations": 1
+            },
+            "IOPA": {
+              "images": 1390,
+              "annotations": 1921
+            }
+          },
+          "calculus": {
+            "OPG": {
+              "images": 11,
+              "annotations": 13
+            },
+            "IOPA": {
+              "images": 111,
+              "annotations": 204
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-11-07T09:43:53.969679",
+  "metrics": {
+    "cavity": {
+      "image_count": 1869,
+      "annotation_count": 10117
+    },
+    "lesion": {
+      "image_count": 315,
+      "annotation_count": 369
+    },
+    "calculus": {
+      "image_count": 111,
+      "annotation_count": 204
+    },
+    "attrition": {
+      "image_count": 71,
+      "annotation_count": 137
+    },
+    "_summary": {
+      "total_images": 2020,
+      "annotated_images": 2020,
+      "unannotated_images": 0
+    }
+  }
+}

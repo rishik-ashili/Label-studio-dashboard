@@ -1,0 +1,2706 @@
+{
+  "9": {
+    "history": [
+      {
+        "timestamp": "2025-11-27T02:40:02.435199",
+        "metrics": {
+          "pulp": {
+            "image_count": 3374,
+            "annotation_count": 7108
+          },
+          "bone": {
+            "image_count": 4178,
+            "annotation_count": 8996
+          },
+          "filling": {
+            "image_count": 1289,
+            "annotation_count": 1984
+          },
+          "cavity": {
+            "image_count": 2329,
+            "annotation_count": 3644
+          },
+          "lesion": {
+            "image_count": 1504,
+            "annotation_count": 2848
+          },
+          "rootcanal": {
+            "image_count": 2361,
+            "annotation_count": 5694
+          },
+          "_summary": {
+            "total_images": 4420,
+            "annotated_images": 4332,
+            "unannotated_images": 88
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:40:04.120612",
+        "metrics": {
+          "pulp": {
+            "image_count": 3374,
+            "annotation_count": 7108
+          },
+          "bone": {
+            "image_count": 4178,
+            "annotation_count": 8996
+          },
+          "filling": {
+            "image_count": 1289,
+            "annotation_count": 1984
+          },
+          "cavity": {
+            "image_count": 2329,
+            "annotation_count": 3644
+          },
+          "lesion": {
+            "image_count": 1504,
+            "annotation_count": 2848
+          },
+          "rootcanal": {
+            "image_count": 2361,
+            "annotation_count": 5694
+          },
+          "_summary": {
+            "total_images": 4420,
+            "annotated_images": 4332,
+            "unannotated_images": 88
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:40:07.417364",
+        "metrics": {
+          "pulp": {
+            "image_count": 3374,
+            "annotation_count": 7108
+          },
+          "bone": {
+            "image_count": 4178,
+            "annotation_count": 8996
+          },
+          "filling": {
+            "image_count": 1289,
+            "annotation_count": 1984
+          },
+          "cavity": {
+            "image_count": 2329,
+            "annotation_count": 3644
+          },
+          "lesion": {
+            "image_count": 1504,
+            "annotation_count": 2848
+          },
+          "rootcanal": {
+            "image_count": 2361,
+            "annotation_count": 5694
+          },
+          "_summary": {
+            "total_images": 4420,
+            "annotated_images": 4332,
+            "unannotated_images": 88
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:40:45.994554",
+        "metrics": {
+          "bone": {
+            "image_count": 4262,
+            "annotation_count": 9187
+          },
+          "filling": {
+            "image_count": 1310,
+            "annotation_count": 2025
+          },
+          "cavity": {
+            "image_count": 2387,
+            "annotation_count": 3755
+          },
+          "pulp": {
+            "image_count": 3444,
+            "annotation_count": 7257
+          },
+          "lesion": {
+            "image_count": 1548,
+            "annotation_count": 2958
+          },
+          "rootcanal": {
+            "image_count": 2379,
+            "annotation_count": 5719
+          },
+          "_summary": {
+            "total_images": 4420,
+            "annotated_images": 4420,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:40:48.441885",
+        "metrics": {
+          "bone": {
+            "image_count": 4262,
+            "annotation_count": 9187
+          },
+          "filling": {
+            "image_count": 1310,
+            "annotation_count": 2025
+          },
+          "cavity": {
+            "image_count": 2387,
+            "annotation_count": 3755
+          },
+          "pulp": {
+            "image_count": 3444,
+            "annotation_count": 7257
+          },
+          "lesion": {
+            "image_count": 1548,
+            "annotation_count": 2958
+          },
+          "rootcanal": {
+            "image_count": 2379,
+            "annotation_count": 5719
+          },
+          "_summary": {
+            "total_images": 4420,
+            "annotated_images": 4420,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:40:52.664518",
+        "metrics": {
+          "bone": {
+            "image_count": 4262,
+            "annotation_count": 9187
+          },
+          "filling": {
+            "image_count": 1310,
+            "annotation_count": 2025
+          },
+          "cavity": {
+            "image_count": 2387,
+            "annotation_count": 3755
+          },
+          "pulp": {
+            "image_count": 3444,
+            "annotation_count": 7257
+          },
+          "lesion": {
+            "image_count": 1548,
+            "annotation_count": 2958
+          },
+          "rootcanal": {
+            "image_count": 2379,
+            "annotation_count": 5719
+          },
+          "_summary": {
+            "total_images": 4420,
+            "annotated_images": 4420,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:40:54.459438",
+        "metrics": {
+          "bone": {
+            "image_count": 4262,
+            "annotation_count": 9187
+          },
+          "filling": {
+            "image_count": 1310,
+            "annotation_count": 2025
+          },
+          "cavity": {
+            "image_count": 2387,
+            "annotation_count": 3755
+          },
+          "pulp": {
+            "image_count": 3444,
+            "annotation_count": 7257
+          },
+          "lesion": {
+            "image_count": 1548,
+            "annotation_count": 2958
+          },
+          "rootcanal": {
+            "image_count": 2379,
+            "annotation_count": 5719
+          },
+          "_summary": {
+            "total_images": 4420,
+            "annotated_images": 4420,
+            "unannotated_images": 0
+          }
+        }
+      }
+    ]
+  },
+  "8": {
+    "history": [
+      {
+        "timestamp": "2025-11-27T02:46:28.684102",
+        "metrics": {
+          "pulp": {
+            "image_count": 382,
+            "annotation_count": 843
+          },
+          "bone": {
+            "image_count": 445,
+            "annotation_count": 1403
+          },
+          "filling": {
+            "image_count": 189,
+            "annotation_count": 415
+          },
+          "rootcanal": {
+            "image_count": 244,
+            "annotation_count": 665
+          },
+          "lesion": {
+            "image_count": 105,
+            "annotation_count": 146
+          },
+          "cavity": {
+            "image_count": 208,
+            "annotation_count": 347
+          },
+          "_summary": {
+            "total_images": 4963,
+            "annotated_images": 445,
+            "unannotated_images": 4518
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:46:32.213841",
+        "metrics": {
+          "pulp": {
+            "image_count": 382,
+            "annotation_count": 843
+          },
+          "bone": {
+            "image_count": 445,
+            "annotation_count": 1403
+          },
+          "filling": {
+            "image_count": 189,
+            "annotation_count": 415
+          },
+          "rootcanal": {
+            "image_count": 244,
+            "annotation_count": 665
+          },
+          "lesion": {
+            "image_count": 105,
+            "annotation_count": 146
+          },
+          "cavity": {
+            "image_count": 208,
+            "annotation_count": 347
+          },
+          "_summary": {
+            "total_images": 4963,
+            "annotated_images": 445,
+            "unannotated_images": 4518
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:46:34.653484",
+        "metrics": {
+          "pulp": {
+            "image_count": 382,
+            "annotation_count": 843
+          },
+          "bone": {
+            "image_count": 445,
+            "annotation_count": 1403
+          },
+          "filling": {
+            "image_count": 189,
+            "annotation_count": 415
+          },
+          "rootcanal": {
+            "image_count": 244,
+            "annotation_count": 665
+          },
+          "lesion": {
+            "image_count": 105,
+            "annotation_count": 146
+          },
+          "cavity": {
+            "image_count": 208,
+            "annotation_count": 347
+          },
+          "_summary": {
+            "total_images": 4963,
+            "annotated_images": 445,
+            "unannotated_images": 4518
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:46:36.152508",
+        "metrics": {
+          "pulp": {
+            "image_count": 382,
+            "annotation_count": 843
+          },
+          "bone": {
+            "image_count": 445,
+            "annotation_count": 1403
+          },
+          "filling": {
+            "image_count": 189,
+            "annotation_count": 415
+          },
+          "rootcanal": {
+            "image_count": 244,
+            "annotation_count": 665
+          },
+          "lesion": {
+            "image_count": 105,
+            "annotation_count": 146
+          },
+          "cavity": {
+            "image_count": 208,
+            "annotation_count": 347
+          },
+          "_summary": {
+            "total_images": 4963,
+            "annotated_images": 445,
+            "unannotated_images": 4518
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:47:22.720776",
+        "metrics": {
+          "pulp": {
+            "image_count": 382,
+            "annotation_count": 843
+          },
+          "bone": {
+            "image_count": 445,
+            "annotation_count": 1403
+          },
+          "filling": {
+            "image_count": 189,
+            "annotation_count": 415
+          },
+          "rootcanal": {
+            "image_count": 244,
+            "annotation_count": 665
+          },
+          "lesion": {
+            "image_count": 105,
+            "annotation_count": 146
+          },
+          "cavity": {
+            "image_count": 208,
+            "annotation_count": 347
+          },
+          "_summary": {
+            "total_images": 4963,
+            "annotated_images": 445,
+            "unannotated_images": 4518
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:47:23.784641",
+        "metrics": {
+          "pulp": {
+            "image_count": 382,
+            "annotation_count": 843
+          },
+          "bone": {
+            "image_count": 445,
+            "annotation_count": 1403
+          },
+          "filling": {
+            "image_count": 189,
+            "annotation_count": 415
+          },
+          "rootcanal": {
+            "image_count": 244,
+            "annotation_count": 665
+          },
+          "lesion": {
+            "image_count": 105,
+            "annotation_count": 146
+          },
+          "cavity": {
+            "image_count": 208,
+            "annotation_count": 347
+          },
+          "_summary": {
+            "total_images": 4963,
+            "annotated_images": 445,
+            "unannotated_images": 4518
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:47:24.748759",
+        "metrics": {
+          "pulp": {
+            "image_count": 382,
+            "annotation_count": 843
+          },
+          "bone": {
+            "image_count": 445,
+            "annotation_count": 1403
+          },
+          "filling": {
+            "image_count": 189,
+            "annotation_count": 415
+          },
+          "rootcanal": {
+            "image_count": 244,
+            "annotation_count": 665
+          },
+          "lesion": {
+            "image_count": 105,
+            "annotation_count": 146
+          },
+          "cavity": {
+            "image_count": 208,
+            "annotation_count": 347
+          },
+          "_summary": {
+            "total_images": 4963,
+            "annotated_images": 445,
+            "unannotated_images": 4518
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:47:27.389603",
+        "metrics": {
+          "pulp": {
+            "image_count": 382,
+            "annotation_count": 843
+          },
+          "bone": {
+            "image_count": 445,
+            "annotation_count": 1403
+          },
+          "filling": {
+            "image_count": 189,
+            "annotation_count": 415
+          },
+          "rootcanal": {
+            "image_count": 244,
+            "annotation_count": 665
+          },
+          "lesion": {
+            "image_count": 105,
+            "annotation_count": 146
+          },
+          "cavity": {
+            "image_count": 208,
+            "annotation_count": 347
+          },
+          "_summary": {
+            "total_images": 4963,
+            "annotated_images": 445,
+            "unannotated_images": 4518
+          }
+        }
+      }
+    ]
+  },
+  "7": {
+    "history": [
+      {
+        "timestamp": "2025-11-27T02:46:32.880068",
+        "metrics": {
+          "cavity": {
+            "image_count": 15,
+            "annotation_count": 15
+          },
+          "lesion": {
+            "image_count": 2,
+            "annotation_count": 2
+          },
+          "calculus": {
+            "image_count": 5,
+            "annotation_count": 6
+          },
+          "_summary": {
+            "total_images": 44,
+            "annotated_images": 44,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:46:34.862516",
+        "metrics": {
+          "cavity": {
+            "image_count": 15,
+            "annotation_count": 15
+          },
+          "lesion": {
+            "image_count": 2,
+            "annotation_count": 2
+          },
+          "calculus": {
+            "image_count": 5,
+            "annotation_count": 6
+          },
+          "_summary": {
+            "total_images": 44,
+            "annotated_images": 44,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:46:37.420798",
+        "metrics": {
+          "cavity": {
+            "image_count": 15,
+            "annotation_count": 15
+          },
+          "lesion": {
+            "image_count": 2,
+            "annotation_count": 2
+          },
+          "calculus": {
+            "image_count": 5,
+            "annotation_count": 6
+          },
+          "_summary": {
+            "total_images": 44,
+            "annotated_images": 44,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:46:39.082403",
+        "metrics": {
+          "cavity": {
+            "image_count": 15,
+            "annotation_count": 15
+          },
+          "lesion": {
+            "image_count": 2,
+            "annotation_count": 2
+          },
+          "calculus": {
+            "image_count": 5,
+            "annotation_count": 6
+          },
+          "_summary": {
+            "total_images": 44,
+            "annotated_images": 44,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:47:25.216834",
+        "metrics": {
+          "cavity": {
+            "image_count": 15,
+            "annotation_count": 15
+          },
+          "lesion": {
+            "image_count": 2,
+            "annotation_count": 2
+          },
+          "calculus": {
+            "image_count": 5,
+            "annotation_count": 6
+          },
+          "_summary": {
+            "total_images": 44,
+            "annotated_images": 44,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:47:26.788236",
+        "metrics": {
+          "cavity": {
+            "image_count": 15,
+            "annotation_count": 15
+          },
+          "lesion": {
+            "image_count": 2,
+            "annotation_count": 2
+          },
+          "calculus": {
+            "image_count": 5,
+            "annotation_count": 6
+          },
+          "_summary": {
+            "total_images": 44,
+            "annotated_images": 44,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:47:27.869025",
+        "metrics": {
+          "cavity": {
+            "image_count": 15,
+            "annotation_count": 15
+          },
+          "lesion": {
+            "image_count": 2,
+            "annotation_count": 2
+          },
+          "calculus": {
+            "image_count": 5,
+            "annotation_count": 6
+          },
+          "_summary": {
+            "total_images": 44,
+            "annotated_images": 44,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:47:29.566225",
+        "metrics": {
+          "cavity": {
+            "image_count": 15,
+            "annotation_count": 15
+          },
+          "lesion": {
+            "image_count": 2,
+            "annotation_count": 2
+          },
+          "calculus": {
+            "image_count": 5,
+            "annotation_count": 6
+          },
+          "_summary": {
+            "total_images": 44,
+            "annotated_images": 44,
+            "unannotated_images": 0
+          }
+        }
+      }
+    ]
+  },
+  "6": {
+    "history": [
+      {
+        "timestamp": "2025-11-27T02:49:03.184274",
+        "metrics": {
+          "cavity": {
+            "image_count": 1869,
+            "annotation_count": 10117
+          },
+          "lesion": {
+            "image_count": 315,
+            "annotation_count": 369
+          },
+          "calculus": {
+            "image_count": 111,
+            "annotation_count": 204
+          },
+          "attrition": {
+            "image_count": 71,
+            "annotation_count": 137
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2020,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:49:04.190337",
+        "metrics": {
+          "cavity": {
+            "image_count": 1869,
+            "annotation_count": 10117
+          },
+          "lesion": {
+            "image_count": 315,
+            "annotation_count": 369
+          },
+          "calculus": {
+            "image_count": 111,
+            "annotation_count": 204
+          },
+          "attrition": {
+            "image_count": 71,
+            "annotation_count": 137
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2020,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:49:05.268551",
+        "metrics": {
+          "cavity": {
+            "image_count": 1869,
+            "annotation_count": 10117
+          },
+          "lesion": {
+            "image_count": 315,
+            "annotation_count": 369
+          },
+          "calculus": {
+            "image_count": 111,
+            "annotation_count": 204
+          },
+          "attrition": {
+            "image_count": 71,
+            "annotation_count": 137
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2020,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:49:07.512726",
+        "metrics": {
+          "cavity": {
+            "image_count": 1869,
+            "annotation_count": 10117
+          },
+          "lesion": {
+            "image_count": 315,
+            "annotation_count": 369
+          },
+          "calculus": {
+            "image_count": 111,
+            "annotation_count": 204
+          },
+          "attrition": {
+            "image_count": 71,
+            "annotation_count": 137
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2020,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:49:46.651889",
+        "metrics": {
+          "cavity": {
+            "image_count": 1869,
+            "annotation_count": 10117
+          },
+          "lesion": {
+            "image_count": 315,
+            "annotation_count": 369
+          },
+          "calculus": {
+            "image_count": 111,
+            "annotation_count": 204
+          },
+          "attrition": {
+            "image_count": 71,
+            "annotation_count": 137
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2020,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:49:47.390929",
+        "metrics": {
+          "cavity": {
+            "image_count": 1869,
+            "annotation_count": 10117
+          },
+          "lesion": {
+            "image_count": 315,
+            "annotation_count": 369
+          },
+          "calculus": {
+            "image_count": 111,
+            "annotation_count": 204
+          },
+          "attrition": {
+            "image_count": 71,
+            "annotation_count": 137
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2020,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:49:49.715654",
+        "metrics": {
+          "cavity": {
+            "image_count": 1869,
+            "annotation_count": 10117
+          },
+          "lesion": {
+            "image_count": 315,
+            "annotation_count": 369
+          },
+          "calculus": {
+            "image_count": 111,
+            "annotation_count": 204
+          },
+          "attrition": {
+            "image_count": 71,
+            "annotation_count": 137
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2020,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:49:50.184520",
+        "metrics": {
+          "cavity": {
+            "image_count": 1869,
+            "annotation_count": 10117
+          },
+          "lesion": {
+            "image_count": 315,
+            "annotation_count": 369
+          },
+          "calculus": {
+            "image_count": 111,
+            "annotation_count": 204
+          },
+          "attrition": {
+            "image_count": 71,
+            "annotation_count": 137
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2020,
+            "unannotated_images": 0
+          }
+        }
+      }
+    ]
+  },
+  "5": {
+    "history": [
+      {
+        "timestamp": "2025-11-27T02:51:10.824708",
+        "metrics": {
+          "cavity": {
+            "image_count": 1584,
+            "annotation_count": 4859
+          },
+          "lesion": {
+            "image_count": 277,
+            "annotation_count": 338
+          },
+          "calculus": {
+            "image_count": 6,
+            "annotation_count": 7
+          },
+          "attrition": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2019,
+            "unannotated_images": 1
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:51:11.185399",
+        "metrics": {
+          "cavity": {
+            "image_count": 1584,
+            "annotation_count": 4859
+          },
+          "lesion": {
+            "image_count": 277,
+            "annotation_count": 338
+          },
+          "calculus": {
+            "image_count": 6,
+            "annotation_count": 7
+          },
+          "attrition": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2019,
+            "unannotated_images": 1
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:51:12.138942",
+        "metrics": {
+          "cavity": {
+            "image_count": 1584,
+            "annotation_count": 4859
+          },
+          "lesion": {
+            "image_count": 277,
+            "annotation_count": 338
+          },
+          "calculus": {
+            "image_count": 6,
+            "annotation_count": 7
+          },
+          "attrition": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2019,
+            "unannotated_images": 1
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:51:14.937812",
+        "metrics": {
+          "cavity": {
+            "image_count": 1584,
+            "annotation_count": 4859
+          },
+          "lesion": {
+            "image_count": 277,
+            "annotation_count": 338
+          },
+          "calculus": {
+            "image_count": 6,
+            "annotation_count": 7
+          },
+          "attrition": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2019,
+            "unannotated_images": 1
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:51:50.856131",
+        "metrics": {
+          "cavity": {
+            "image_count": 1584,
+            "annotation_count": 4859
+          },
+          "lesion": {
+            "image_count": 277,
+            "annotation_count": 338
+          },
+          "calculus": {
+            "image_count": 6,
+            "annotation_count": 7
+          },
+          "attrition": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2019,
+            "unannotated_images": 1
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:51:51.742917",
+        "metrics": {
+          "cavity": {
+            "image_count": 1584,
+            "annotation_count": 4859
+          },
+          "lesion": {
+            "image_count": 277,
+            "annotation_count": 338
+          },
+          "calculus": {
+            "image_count": 6,
+            "annotation_count": 7
+          },
+          "attrition": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2019,
+            "unannotated_images": 1
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:51:53.330487",
+        "metrics": {
+          "cavity": {
+            "image_count": 1584,
+            "annotation_count": 4859
+          },
+          "lesion": {
+            "image_count": 277,
+            "annotation_count": 338
+          },
+          "calculus": {
+            "image_count": 6,
+            "annotation_count": 7
+          },
+          "attrition": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2019,
+            "unannotated_images": 1
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:51:53.858760",
+        "metrics": {
+          "cavity": {
+            "image_count": 1584,
+            "annotation_count": 4859
+          },
+          "lesion": {
+            "image_count": 277,
+            "annotation_count": 338
+          },
+          "calculus": {
+            "image_count": 6,
+            "annotation_count": 7
+          },
+          "attrition": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "_summary": {
+            "total_images": 2020,
+            "annotated_images": 2019,
+            "unannotated_images": 1
+          }
+        }
+      }
+    ]
+  },
+  "4": {
+    "history": [
+      {
+        "timestamp": "2025-11-27T02:53:14.812390",
+        "metrics": {
+          "cavity": {
+            "image_count": 1592,
+            "annotation_count": 2803
+          },
+          "lesion": {
+            "image_count": 966,
+            "annotation_count": 1402
+          },
+          "attrition": {
+            "image_count": 94,
+            "annotation_count": 140
+          },
+          "_summary": {
+            "total_images": 2173,
+            "annotated_images": 2111,
+            "unannotated_images": 62
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:53:16.055027",
+        "metrics": {
+          "cavity": {
+            "image_count": 1592,
+            "annotation_count": 2803
+          },
+          "lesion": {
+            "image_count": 966,
+            "annotation_count": 1402
+          },
+          "attrition": {
+            "image_count": 94,
+            "annotation_count": 140
+          },
+          "_summary": {
+            "total_images": 2173,
+            "annotated_images": 2111,
+            "unannotated_images": 62
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:53:16.069385",
+        "metrics": {
+          "cavity": {
+            "image_count": 1592,
+            "annotation_count": 2803
+          },
+          "lesion": {
+            "image_count": 966,
+            "annotation_count": 1402
+          },
+          "attrition": {
+            "image_count": 94,
+            "annotation_count": 140
+          },
+          "_summary": {
+            "total_images": 2173,
+            "annotated_images": 2111,
+            "unannotated_images": 62
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:53:19.225413",
+        "metrics": {
+          "cavity": {
+            "image_count": 1592,
+            "annotation_count": 2803
+          },
+          "lesion": {
+            "image_count": 966,
+            "annotation_count": 1402
+          },
+          "attrition": {
+            "image_count": 94,
+            "annotation_count": 140
+          },
+          "_summary": {
+            "total_images": 2173,
+            "annotated_images": 2111,
+            "unannotated_images": 62
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:53:56.238415",
+        "metrics": {
+          "cavity": {
+            "image_count": 1592,
+            "annotation_count": 2803
+          },
+          "lesion": {
+            "image_count": 966,
+            "annotation_count": 1402
+          },
+          "attrition": {
+            "image_count": 94,
+            "annotation_count": 140
+          },
+          "_summary": {
+            "total_images": 2173,
+            "annotated_images": 2111,
+            "unannotated_images": 62
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:53:57.336296",
+        "metrics": {
+          "cavity": {
+            "image_count": 1592,
+            "annotation_count": 2803
+          },
+          "lesion": {
+            "image_count": 966,
+            "annotation_count": 1402
+          },
+          "attrition": {
+            "image_count": 94,
+            "annotation_count": 140
+          },
+          "_summary": {
+            "total_images": 2173,
+            "annotated_images": 2111,
+            "unannotated_images": 62
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:53:58.353239",
+        "metrics": {
+          "cavity": {
+            "image_count": 1592,
+            "annotation_count": 2803
+          },
+          "lesion": {
+            "image_count": 966,
+            "annotation_count": 1402
+          },
+          "attrition": {
+            "image_count": 94,
+            "annotation_count": 140
+          },
+          "_summary": {
+            "total_images": 2173,
+            "annotated_images": 2111,
+            "unannotated_images": 62
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:53:58.440059",
+        "metrics": {
+          "cavity": {
+            "image_count": 1592,
+            "annotation_count": 2803
+          },
+          "lesion": {
+            "image_count": 966,
+            "annotation_count": 1402
+          },
+          "attrition": {
+            "image_count": 94,
+            "annotation_count": 140
+          },
+          "_summary": {
+            "total_images": 2173,
+            "annotated_images": 2111,
+            "unannotated_images": 62
+          }
+        }
+      }
+    ]
+  },
+  "3": {
+    "history": [
+      {
+        "timestamp": "2025-11-27T02:56:53.691528",
+        "metrics": {
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 0,
+            "unannotated_images": 2084
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:56:54.051520",
+        "metrics": {
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 0,
+            "unannotated_images": 2084
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:56:56.850753",
+        "metrics": {
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 0,
+            "unannotated_images": 2084
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:57:00.143873",
+        "metrics": {
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 0,
+            "unannotated_images": 2084
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:57:34.297305",
+        "metrics": {
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 0,
+            "unannotated_images": 2084
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:57:36.300911",
+        "metrics": {
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 0,
+            "unannotated_images": 2084
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:57:37.382753",
+        "metrics": {
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 0,
+            "unannotated_images": 2084
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:57:40.002248",
+        "metrics": {
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 0,
+            "unannotated_images": 2084
+          }
+        }
+      }
+    ]
+  },
+  "2": {
+    "history": [
+      {
+        "timestamp": "2025-11-27T02:58:32.302901",
+        "metrics": {
+          "lesion": {
+            "image_count": 3,
+            "annotation_count": 3
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 5
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 4,
+            "unannotated_images": 2080
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:58:32.864536",
+        "metrics": {
+          "lesion": {
+            "image_count": 3,
+            "annotation_count": 3
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 5
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 4,
+            "unannotated_images": 2080
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:58:34.258744",
+        "metrics": {
+          "lesion": {
+            "image_count": 3,
+            "annotation_count": 3
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 5
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 4,
+            "unannotated_images": 2080
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:58:34.420562",
+        "metrics": {
+          "lesion": {
+            "image_count": 3,
+            "annotation_count": 3
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 5
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 4,
+            "unannotated_images": 2080
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:59:12.321021",
+        "metrics": {
+          "lesion": {
+            "image_count": 3,
+            "annotation_count": 3
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 5
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 4,
+            "unannotated_images": 2080
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:59:12.734704",
+        "metrics": {
+          "lesion": {
+            "image_count": 3,
+            "annotation_count": 3
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 5
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 4,
+            "unannotated_images": 2080
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:59:13.197976",
+        "metrics": {
+          "lesion": {
+            "image_count": 3,
+            "annotation_count": 3
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 5
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 4,
+            "unannotated_images": 2080
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:59:13.835774",
+        "metrics": {
+          "lesion": {
+            "image_count": 3,
+            "annotation_count": 3
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 5
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 4,
+            "unannotated_images": 2080
+          }
+        }
+      }
+    ]
+  },
+  "1": {
+    "history": [
+      {
+        "timestamp": "2025-11-27T02:59:55.951425",
+        "metrics": {
+          "lesion": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 3
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 3,
+            "unannotated_images": 2081
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:59:56.322113",
+        "metrics": {
+          "lesion": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 3
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 3,
+            "unannotated_images": 2081
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:59:57.526515",
+        "metrics": {
+          "lesion": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 3
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 3,
+            "unannotated_images": 2081
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-27T02:59:57.712976",
+        "metrics": {
+          "lesion": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 3
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 3,
+            "unannotated_images": 2081
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T03:00:37.572999",
+        "metrics": {
+          "lesion": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 3
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 3,
+            "unannotated_images": 2081
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T03:00:38.602212",
+        "metrics": {
+          "lesion": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 3
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 3,
+            "unannotated_images": 2081
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T03:00:39.320285",
+        "metrics": {
+          "lesion": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 3
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 3,
+            "unannotated_images": 2081
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T03:00:39.889868",
+        "metrics": {
+          "lesion": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "cavity": {
+            "image_count": 2,
+            "annotation_count": 3
+          },
+          "_summary": {
+            "total_images": 2084,
+            "annotated_images": 3,
+            "unannotated_images": 2081
+          }
+        }
+      }
+    ]
+  },
+  "19": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T02:08:30.903238",
+        "metrics": {
+          "cavity": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "filling": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "enamel": {
+            "image_count": 9,
+            "annotation_count": 11
+          },
+          "pulp": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "root canal": {
+            "image_count": 8,
+            "annotation_count": 8
+          },
+          "impacted tooth": {
+            "image_count": 5,
+            "annotation_count": 6
+          },
+          "crown": {
+            "image_count": 4,
+            "annotation_count": 5
+          },
+          "_summary": {
+            "total_images": 998,
+            "annotated_images": 12,
+            "unannotated_images": 986
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:08:33.977979",
+        "metrics": {
+          "cavity": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "filling": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "enamel": {
+            "image_count": 9,
+            "annotation_count": 11
+          },
+          "pulp": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "root canal": {
+            "image_count": 8,
+            "annotation_count": 8
+          },
+          "impacted tooth": {
+            "image_count": 5,
+            "annotation_count": 6
+          },
+          "crown": {
+            "image_count": 4,
+            "annotation_count": 5
+          },
+          "_summary": {
+            "total_images": 998,
+            "annotated_images": 12,
+            "unannotated_images": 986
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:08:34.033724",
+        "metrics": {
+          "cavity": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "filling": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "enamel": {
+            "image_count": 9,
+            "annotation_count": 11
+          },
+          "pulp": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "root canal": {
+            "image_count": 8,
+            "annotation_count": 8
+          },
+          "impacted tooth": {
+            "image_count": 5,
+            "annotation_count": 6
+          },
+          "crown": {
+            "image_count": 4,
+            "annotation_count": 5
+          },
+          "_summary": {
+            "total_images": 998,
+            "annotated_images": 12,
+            "unannotated_images": 986
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:08:34.959262",
+        "metrics": {
+          "cavity": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "filling": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "enamel": {
+            "image_count": 9,
+            "annotation_count": 11
+          },
+          "pulp": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "root canal": {
+            "image_count": 8,
+            "annotation_count": 8
+          },
+          "impacted tooth": {
+            "image_count": 5,
+            "annotation_count": 6
+          },
+          "crown": {
+            "image_count": 4,
+            "annotation_count": 5
+          },
+          "_summary": {
+            "total_images": 998,
+            "annotated_images": 12,
+            "unannotated_images": 986
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T13:00:47.802099",
+        "metrics": {
+          "cavity": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "filling": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "enamel": {
+            "image_count": 9,
+            "annotation_count": 11
+          },
+          "pulp": {
+            "image_count": 9,
+            "annotation_count": 10
+          },
+          "root canal": {
+            "image_count": 8,
+            "annotation_count": 8
+          },
+          "impacted tooth": {
+            "image_count": 5,
+            "annotation_count": 6
+          },
+          "crown": {
+            "image_count": 4,
+            "annotation_count": 5
+          },
+          "_summary": {
+            "total_images": 998,
+            "annotated_images": 12,
+            "unannotated_images": 986
+          }
+        }
+      }
+    ]
+  },
+  "18": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T02:09:00.638001",
+        "metrics": {
+          "_summary": {
+            "total_images": 1000,
+            "annotated_images": 0,
+            "unannotated_images": 1000
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:09:04.052504",
+        "metrics": {
+          "_summary": {
+            "total_images": 1000,
+            "annotated_images": 0,
+            "unannotated_images": 1000
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:09:04.090955",
+        "metrics": {
+          "_summary": {
+            "total_images": 1000,
+            "annotated_images": 0,
+            "unannotated_images": 1000
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:09:05.381253",
+        "metrics": {
+          "_summary": {
+            "total_images": 1000,
+            "annotated_images": 0,
+            "unannotated_images": 1000
+          }
+        }
+      }
+    ]
+  },
+  "17": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T02:09:31.219567",
+        "metrics": {
+          "enamel": {
+            "image_count": 72,
+            "annotation_count": 73
+          },
+          "lesion": {
+            "image_count": 3,
+            "annotation_count": 3
+          },
+          "_summary": {
+            "total_images": 1000,
+            "annotated_images": 74,
+            "unannotated_images": 926
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:09:33.833602",
+        "metrics": {
+          "enamel": {
+            "image_count": 72,
+            "annotation_count": 73
+          },
+          "lesion": {
+            "image_count": 3,
+            "annotation_count": 3
+          },
+          "_summary": {
+            "total_images": 1000,
+            "annotated_images": 74,
+            "unannotated_images": 926
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:09:34.444546",
+        "metrics": {
+          "enamel": {
+            "image_count": 72,
+            "annotation_count": 73
+          },
+          "lesion": {
+            "image_count": 3,
+            "annotation_count": 3
+          },
+          "_summary": {
+            "total_images": 1000,
+            "annotated_images": 74,
+            "unannotated_images": 926
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:09:36.432341",
+        "metrics": {
+          "enamel": {
+            "image_count": 72,
+            "annotation_count": 73
+          },
+          "lesion": {
+            "image_count": 3,
+            "annotation_count": 3
+          },
+          "_summary": {
+            "total_images": 1000,
+            "annotated_images": 74,
+            "unannotated_images": 926
+          }
+        }
+      }
+    ]
+  },
+  "16": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T02:09:42.552258",
+        "metrics": {
+          "enamel": {
+            "image_count": 200,
+            "annotation_count": 209
+          },
+          "lesion": {
+            "image_count": 17,
+            "annotation_count": 17
+          },
+          "_summary": {
+            "total_images": 200,
+            "annotated_images": 200,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:09:46.199323",
+        "metrics": {
+          "enamel": {
+            "image_count": 200,
+            "annotation_count": 209
+          },
+          "lesion": {
+            "image_count": 17,
+            "annotation_count": 17
+          },
+          "_summary": {
+            "total_images": 200,
+            "annotated_images": 200,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:09:47.926237",
+        "metrics": {
+          "enamel": {
+            "image_count": 200,
+            "annotation_count": 209
+          },
+          "lesion": {
+            "image_count": 17,
+            "annotation_count": 17
+          },
+          "_summary": {
+            "total_images": 200,
+            "annotated_images": 200,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:09:50.607916",
+        "metrics": {
+          "enamel": {
+            "image_count": 200,
+            "annotation_count": 209
+          },
+          "lesion": {
+            "image_count": 17,
+            "annotation_count": 17
+          },
+          "_summary": {
+            "total_images": 200,
+            "annotated_images": 200,
+            "unannotated_images": 0
+          }
+        }
+      }
+    ]
+  },
+  "15": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T02:09:59.097366",
+        "metrics": {
+          "enamel": {
+            "image_count": 200,
+            "annotation_count": 204
+          },
+          "lesion": {
+            "image_count": 70,
+            "annotation_count": 70
+          },
+          "_summary": {
+            "total_images": 200,
+            "annotated_images": 200,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:10:05.472868",
+        "metrics": {
+          "enamel": {
+            "image_count": 200,
+            "annotation_count": 204
+          },
+          "lesion": {
+            "image_count": 70,
+            "annotation_count": 70
+          },
+          "_summary": {
+            "total_images": 200,
+            "annotated_images": 200,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:10:05.734037",
+        "metrics": {
+          "enamel": {
+            "image_count": 200,
+            "annotation_count": 204
+          },
+          "lesion": {
+            "image_count": 70,
+            "annotation_count": 70
+          },
+          "_summary": {
+            "total_images": 200,
+            "annotated_images": 200,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:10:09.288400",
+        "metrics": {
+          "enamel": {
+            "image_count": 200,
+            "annotation_count": 204
+          },
+          "lesion": {
+            "image_count": 70,
+            "annotation_count": 70
+          },
+          "_summary": {
+            "total_images": 200,
+            "annotated_images": 200,
+            "unannotated_images": 0
+          }
+        }
+      }
+    ]
+  },
+  "14": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T02:10:16.363782",
+        "metrics": {
+          "enamel": {
+            "image_count": 199,
+            "annotation_count": 205
+          },
+          "lesion": {
+            "image_count": 99,
+            "annotation_count": 102
+          },
+          "_summary": {
+            "total_images": 200,
+            "annotated_images": 200,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:10:23.621595",
+        "metrics": {
+          "enamel": {
+            "image_count": 199,
+            "annotation_count": 205
+          },
+          "lesion": {
+            "image_count": 99,
+            "annotation_count": 102
+          },
+          "_summary": {
+            "total_images": 200,
+            "annotated_images": 200,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:10:23.898331",
+        "metrics": {
+          "enamel": {
+            "image_count": 199,
+            "annotation_count": 205
+          },
+          "lesion": {
+            "image_count": 99,
+            "annotation_count": 102
+          },
+          "_summary": {
+            "total_images": 200,
+            "annotated_images": 200,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:10:29.570298",
+        "metrics": {
+          "enamel": {
+            "image_count": 199,
+            "annotation_count": 205
+          },
+          "lesion": {
+            "image_count": 99,
+            "annotation_count": 102
+          },
+          "_summary": {
+            "total_images": 200,
+            "annotated_images": 200,
+            "unannotated_images": 0
+          }
+        }
+      }
+    ]
+  },
+  "13": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T02:13:12.341781",
+        "metrics": {
+          "bone": {
+            "image_count": 1098,
+            "annotation_count": 7140
+          },
+          "pulp": {
+            "image_count": 1095,
+            "annotation_count": 5963
+          },
+          "filling": {
+            "image_count": 960,
+            "annotation_count": 4106
+          },
+          "cavity": {
+            "image_count": 1097,
+            "annotation_count": 14578
+          },
+          "lesion": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "_summary": {
+            "total_images": 1099,
+            "annotated_images": 1099,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:13:14.562244",
+        "metrics": {
+          "bone": {
+            "image_count": 1098,
+            "annotation_count": 7140
+          },
+          "pulp": {
+            "image_count": 1095,
+            "annotation_count": 5963
+          },
+          "filling": {
+            "image_count": 960,
+            "annotation_count": 4106
+          },
+          "cavity": {
+            "image_count": 1097,
+            "annotation_count": 14578
+          },
+          "lesion": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "_summary": {
+            "total_images": 1099,
+            "annotated_images": 1099,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:13:15.317809",
+        "metrics": {
+          "bone": {
+            "image_count": 1098,
+            "annotation_count": 7140
+          },
+          "pulp": {
+            "image_count": 1095,
+            "annotation_count": 5963
+          },
+          "filling": {
+            "image_count": 960,
+            "annotation_count": 4106
+          },
+          "cavity": {
+            "image_count": 1097,
+            "annotation_count": 14578
+          },
+          "lesion": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "_summary": {
+            "total_images": 1099,
+            "annotated_images": 1099,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:13:18.971934",
+        "metrics": {
+          "bone": {
+            "image_count": 1098,
+            "annotation_count": 7140
+          },
+          "pulp": {
+            "image_count": 1095,
+            "annotation_count": 5963
+          },
+          "filling": {
+            "image_count": 960,
+            "annotation_count": 4106
+          },
+          "cavity": {
+            "image_count": 1097,
+            "annotation_count": 14578
+          },
+          "lesion": {
+            "image_count": 1,
+            "annotation_count": 1
+          },
+          "_summary": {
+            "total_images": 1099,
+            "annotated_images": 1099,
+            "unannotated_images": 0
+          }
+        }
+      }
+    ]
+  },
+  "12": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T02:13:20.246851",
+        "metrics": {
+          "cavity": {
+            "image_count": 72,
+            "annotation_count": 72
+          },
+          "lesion": {
+            "image_count": 27,
+            "annotation_count": 27
+          },
+          "_summary": {
+            "total_images": 97,
+            "annotated_images": 97,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:13:21.154869",
+        "metrics": {
+          "cavity": {
+            "image_count": 72,
+            "annotation_count": 72
+          },
+          "lesion": {
+            "image_count": 27,
+            "annotation_count": 27
+          },
+          "_summary": {
+            "total_images": 97,
+            "annotated_images": 97,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:13:22.826222",
+        "metrics": {
+          "cavity": {
+            "image_count": 72,
+            "annotation_count": 72
+          },
+          "lesion": {
+            "image_count": 27,
+            "annotation_count": 27
+          },
+          "_summary": {
+            "total_images": 97,
+            "annotated_images": 97,
+            "unannotated_images": 0
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:13:25.576877",
+        "metrics": {
+          "cavity": {
+            "image_count": 72,
+            "annotation_count": 72
+          },
+          "lesion": {
+            "image_count": 27,
+            "annotation_count": 27
+          },
+          "_summary": {
+            "total_images": 97,
+            "annotated_images": 97,
+            "unannotated_images": 0
+          }
+        }
+      }
+    ]
+  },
+  "11": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T02:20:14.185950",
+        "metrics": {
+          "bone": {
+            "image_count": 1155,
+            "annotation_count": 2433
+          },
+          "pulp": {
+            "image_count": 1023,
+            "annotation_count": 2447
+          },
+          "filling": {
+            "image_count": 409,
+            "annotation_count": 536
+          },
+          "rootcanal": {
+            "image_count": 693,
+            "annotation_count": 1821
+          },
+          "cavity": {
+            "image_count": 807,
+            "annotation_count": 1767
+          },
+          "lesion": {
+            "image_count": 108,
+            "annotation_count": 123
+          },
+          "_summary": {
+            "total_images": 4743,
+            "annotated_images": 1180,
+            "unannotated_images": 3563
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:20:15.457872",
+        "metrics": {
+          "bone": {
+            "image_count": 1155,
+            "annotation_count": 2433
+          },
+          "pulp": {
+            "image_count": 1023,
+            "annotation_count": 2447
+          },
+          "filling": {
+            "image_count": 409,
+            "annotation_count": 536
+          },
+          "rootcanal": {
+            "image_count": 693,
+            "annotation_count": 1821
+          },
+          "cavity": {
+            "image_count": 807,
+            "annotation_count": 1767
+          },
+          "lesion": {
+            "image_count": 108,
+            "annotation_count": 123
+          },
+          "_summary": {
+            "total_images": 4743,
+            "annotated_images": 1180,
+            "unannotated_images": 3563
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:20:15.779441",
+        "metrics": {
+          "bone": {
+            "image_count": 1155,
+            "annotation_count": 2433
+          },
+          "pulp": {
+            "image_count": 1023,
+            "annotation_count": 2447
+          },
+          "filling": {
+            "image_count": 409,
+            "annotation_count": 536
+          },
+          "rootcanal": {
+            "image_count": 693,
+            "annotation_count": 1821
+          },
+          "cavity": {
+            "image_count": 807,
+            "annotation_count": 1767
+          },
+          "lesion": {
+            "image_count": 108,
+            "annotation_count": 123
+          },
+          "_summary": {
+            "total_images": 4743,
+            "annotated_images": 1180,
+            "unannotated_images": 3563
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:20:17.264194",
+        "metrics": {
+          "bone": {
+            "image_count": 1155,
+            "annotation_count": 2433
+          },
+          "pulp": {
+            "image_count": 1023,
+            "annotation_count": 2447
+          },
+          "filling": {
+            "image_count": 409,
+            "annotation_count": 536
+          },
+          "rootcanal": {
+            "image_count": 693,
+            "annotation_count": 1821
+          },
+          "cavity": {
+            "image_count": 807,
+            "annotation_count": 1767
+          },
+          "lesion": {
+            "image_count": 108,
+            "annotation_count": 123
+          },
+          "_summary": {
+            "total_images": 4743,
+            "annotated_images": 1180,
+            "unannotated_images": 3563
+          }
+        }
+      }
+    ]
+  },
+  "10": {
+    "history": [
+      {
+        "timestamp": "2025-11-28T02:31:37.141286",
+        "metrics": {
+          "bone": {
+            "image_count": 3570,
+            "annotation_count": 4972
+          },
+          "filling": {
+            "image_count": 825,
+            "annotation_count": 969
+          },
+          "rootcanal": {
+            "image_count": 2323,
+            "annotation_count": 4376
+          },
+          "lesion": {
+            "image_count": 981,
+            "annotation_count": 1196
+          },
+          "cavity": {
+            "image_count": 2322,
+            "annotation_count": 3025
+          },
+          "pulp": {
+            "image_count": 2639,
+            "annotation_count": 4943
+          },
+          "_summary": {
+            "total_images": 4259,
+            "annotated_images": 3744,
+            "unannotated_images": 515
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:31:39.262878",
+        "metrics": {
+          "bone": {
+            "image_count": 3570,
+            "annotation_count": 4972
+          },
+          "filling": {
+            "image_count": 825,
+            "annotation_count": 969
+          },
+          "rootcanal": {
+            "image_count": 2323,
+            "annotation_count": 4376
+          },
+          "lesion": {
+            "image_count": 981,
+            "annotation_count": 1196
+          },
+          "cavity": {
+            "image_count": 2322,
+            "annotation_count": 3025
+          },
+          "pulp": {
+            "image_count": 2639,
+            "annotation_count": 4943
+          },
+          "_summary": {
+            "total_images": 4259,
+            "annotated_images": 3744,
+            "unannotated_images": 515
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:31:41.719572",
+        "metrics": {
+          "bone": {
+            "image_count": 3570,
+            "annotation_count": 4972
+          },
+          "filling": {
+            "image_count": 825,
+            "annotation_count": 969
+          },
+          "rootcanal": {
+            "image_count": 2323,
+            "annotation_count": 4376
+          },
+          "lesion": {
+            "image_count": 981,
+            "annotation_count": 1196
+          },
+          "cavity": {
+            "image_count": 2322,
+            "annotation_count": 3025
+          },
+          "pulp": {
+            "image_count": 2639,
+            "annotation_count": 4943
+          },
+          "_summary": {
+            "total_images": 4259,
+            "annotated_images": 3744,
+            "unannotated_images": 515
+          }
+        }
+      },
+      {
+        "timestamp": "2025-11-28T02:31:44.437206",
+        "metrics": {
+          "bone": {
+            "image_count": 3570,
+            "annotation_count": 4972
+          },
+          "filling": {
+            "image_count": 825,
+            "annotation_count": 969
+          },
+          "rootcanal": {
+            "image_count": 2323,
+            "annotation_count": 4376
+          },
+          "lesion": {
+            "image_count": 981,
+            "annotation_count": 1196
+          },
+          "cavity": {
+            "image_count": 2322,
+            "annotation_count": 3025
+          },
+          "pulp": {
+            "image_count": 2639,
+            "annotation_count": 4943
+          },
+          "_summary": {
+            "total_images": 4259,
+            "annotated_images": 3744,
+            "unannotated_images": 515
+          }
+        }
+      }
+    ]
+  }
+}

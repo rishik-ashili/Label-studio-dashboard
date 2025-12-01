@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-11-07T10:09:48.056814",
+  "metrics": {
+    "bone": {
+      "image_count": 394,
+      "annotation_count": 858
+    },
+    "filling": {
+      "image_count": 137,
+      "annotation_count": 186
+    },
+    "pulp": {
+      "image_count": 358,
+      "annotation_count": 843
+    },
+    "cavity": {
+      "image_count": 228,
+      "annotation_count": 450
+    },
+    "rootcanal": {
+      "image_count": 220,
+      "annotation_count": 568
+    },
+    "lesion": {
+      "image_count": 31,
+      "annotation_count": 36
+    },
+    "_summary": {
+      "total_images": 4743,
+      "annotated_images": 407,
+      "unannotated_images": 4336
+    }
+  }
+}

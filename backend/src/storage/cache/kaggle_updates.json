@@ -1,0 +1,17 @@
+[
+  {
+    "timestamp": "2025-11-10T09:46:13.185748",
+    "category": "Pathology",
+    "source": "kaggle_manual_edit"
+  },
+  {
+    "timestamp": "2025-11-10T09:52:47.895728",
+    "category": "Non-Pathology",
+    "source": "kaggle_manual_edit"
+  },
+  {
+    "timestamp": "2025-11-10T10:04:48.940506",
+    "category": "Tooth Parts",
+    "source": "kaggle_manual_edit"
+  }
+]

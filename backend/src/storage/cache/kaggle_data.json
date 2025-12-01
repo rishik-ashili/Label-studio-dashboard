@@ -1,0 +1,174 @@
+{
+  "Pathology": {
+    "calculus": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 628
+      },
+      "IOPA": {
+        "images": 0
+      }
+    },
+    "cavity": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 3045
+      },
+      "IOPA": {
+        "images": 10069
+      }
+    },
+    "lesion": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 2940
+      },
+      "IOPA": {
+        "images": 0
+      }
+    }
+  },
+  "Non-Pathology": {
+    "collimation": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 0
+      },
+      "IOPA": {
+        "images": 0
+      }
+    },
+    "crown": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 545
+      },
+      "IOPA": {
+        "images": 884
+      }
+    },
+    "filling": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 3279
+      },
+      "IOPA": {
+        "images": 1465
+      }
+    },
+    "implant": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 99
+      },
+      "IOPA": {
+        "images": 655
+      }
+    },
+    "rootcanal": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 251
+      },
+      "IOPA": {
+        "images": 4735
+      }
+    },
+    "sinus": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 1
+      },
+      "IOPA": {
+        "images": 611
+      }
+    }
+  },
+  "Tooth Parts": {
+    "bone": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 1097
+      },
+      "IOPA": {
+        "images": 4281
+      }
+    },
+    "dentin": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 1099
+      },
+      "IOPA": {
+        "images": 2158
+      }
+    },
+    "enamel": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 1090
+      },
+      "IOPA": {
+        "images": 2115
+      }
+    },
+    "pulp": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 1096
+      },
+      "IOPA": {
+        "images": 2808
+      }
+    },
+    "tooth mask": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 154
+      },
+      "IOPA": {
+        "images": 303
+      }
+    },
+    "tooth number": {
+      "OPG": {
+        "images": 0
+      },
+      "Bitewing": {
+        "images": 149656
+      },
+      "IOPA": {
+        "images": 59977
+      }
+    }
+  },
+  "Others": {}
+}

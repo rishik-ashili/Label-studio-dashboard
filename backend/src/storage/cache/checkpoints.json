@@ -1,0 +1,611 @@
+{
+  "projects": {
+    "16": {
+      "project_id": 16,
+      "project_title": "Dr. Trupal OPG",
+      "timestamp": "2025-11-08T02:08:11.906031",
+      "metrics": {
+        "enamel": {
+          "image_count": 200,
+          "annotation_count": 209
+        },
+        "lesion": {
+          "image_count": 17,
+          "annotation_count": 17
+        },
+        "_summary": {
+          "total_images": 200,
+          "annotated_images": 200,
+          "unannotated_images": 0
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.098545"
+    },
+    "15": {
+      "project_id": 15,
+      "project_title": "Dr.Nimesh OPG",
+      "timestamp": "2025-11-08T02:08:22.157767",
+      "metrics": {
+        "enamel": {
+          "image_count": 200,
+          "annotation_count": 204
+        },
+        "lesion": {
+          "image_count": 70,
+          "annotation_count": 70
+        },
+        "_summary": {
+          "total_images": 200,
+          "annotated_images": 200,
+          "unannotated_images": 0
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.101112"
+    },
+    "14": {
+      "project_id": 14,
+      "project_title": "Dr. Mamta OPG",
+      "timestamp": "2025-11-08T02:08:32.495640",
+      "metrics": {
+        "enamel": {
+          "image_count": 199,
+          "annotation_count": 205
+        },
+        "lesion": {
+          "image_count": 99,
+          "annotation_count": 102
+        },
+        "_summary": {
+          "total_images": 200,
+          "annotated_images": 200,
+          "unannotated_images": 0
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.102607"
+    },
+    "13": {
+      "project_id": 13,
+      "project_title": "Bitewing Dr Apoorva",
+      "timestamp": "2025-11-08T02:09:28.977319",
+      "metrics": {
+        "filling": {
+          "image_count": 326,
+          "annotation_count": 1657
+        },
+        "pulp": {
+          "image_count": 339,
+          "annotation_count": 1626
+        },
+        "bone": {
+          "image_count": 340,
+          "annotation_count": 2024
+        },
+        "cavity": {
+          "image_count": 340,
+          "annotation_count": 4831
+        },
+        "_summary": {
+          "total_images": 1099,
+          "annotated_images": 340,
+          "unannotated_images": 759
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.105343"
+    },
+    "12": {
+      "project_id": 12,
+      "project_title": "Preprocessing Comparisons Dr Nimesh",
+      "timestamp": "2025-11-08T02:09:31.519721",
+      "metrics": {
+        "cavity": {
+          "image_count": 72,
+          "annotation_count": 72
+        },
+        "lesion": {
+          "image_count": 27,
+          "annotation_count": 27
+        },
+        "_summary": {
+          "total_images": 97,
+          "annotated_images": 97,
+          "unannotated_images": 0
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.108409"
+    },
+    "11": {
+      "project_id": 11,
+      "project_title": "Full-Dataset Dr Mamta",
+      "timestamp": "2025-11-08T02:12:44.353883",
+      "metrics": {
+        "bone": {
+          "image_count": 394,
+          "annotation_count": 858
+        },
+        "filling": {
+          "image_count": 137,
+          "annotation_count": 186
+        },
+        "pulp": {
+          "image_count": 358,
+          "annotation_count": 843
+        },
+        "cavity": {
+          "image_count": 228,
+          "annotation_count": 450
+        },
+        "rootcanal": {
+          "image_count": 220,
+          "annotation_count": 568
+        },
+        "lesion": {
+          "image_count": 31,
+          "annotation_count": 36
+        },
+        "_summary": {
+          "total_images": 4743,
+          "annotated_images": 407,
+          "unannotated_images": 4336
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.110431"
+    },
+    "10": {
+      "project_id": 10,
+      "project_title": "Full dataset Dr Nimesh",
+      "timestamp": "2025-11-08T02:16:58.731562",
+      "metrics": {
+        "rootcanal": {
+          "image_count": 1646,
+          "annotation_count": 3065
+        },
+        "cavity": {
+          "image_count": 1591,
+          "annotation_count": 2086
+        },
+        "bone": {
+          "image_count": 2323,
+          "annotation_count": 3259
+        },
+        "pulp": {
+          "image_count": 1742,
+          "annotation_count": 3246
+        },
+        "lesion": {
+          "image_count": 597,
+          "annotation_count": 707
+        },
+        "filling": {
+          "image_count": 593,
+          "annotation_count": 688
+        },
+        "_summary": {
+          "total_images": 4259,
+          "annotated_images": 2404,
+          "unannotated_images": 1855
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.112754"
+    },
+    "9": {
+      "project_id": 9,
+      "project_title": "Full dataset Dr Trupal",
+      "timestamp": "2025-11-08T02:20:28.751352",
+      "metrics": {
+        "pulp": {
+          "image_count": 1993,
+          "annotation_count": 4207
+        },
+        "bone": {
+          "image_count": 2569,
+          "annotation_count": 5457
+        },
+        "rootcanal": {
+          "image_count": 1634,
+          "annotation_count": 3692
+        },
+        "cavity": {
+          "image_count": 1443,
+          "annotation_count": 2026
+        },
+        "lesion": {
+          "image_count": 591,
+          "annotation_count": 740
+        },
+        "filling": {
+          "image_count": 800,
+          "annotation_count": 1071
+        },
+        "_summary": {
+          "total_images": 4421,
+          "annotated_images": 2612,
+          "unannotated_images": 1809
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.115576"
+    },
+    "8": {
+      "project_id": 8,
+      "project_title": "Full dataset Dr Jinal",
+      "timestamp": "2025-11-08T02:23:41.680209",
+      "metrics": {
+        "pulp": {
+          "image_count": 382,
+          "annotation_count": 843
+        },
+        "bone": {
+          "image_count": 445,
+          "annotation_count": 1403
+        },
+        "filling": {
+          "image_count": 189,
+          "annotation_count": 415
+        },
+        "rootcanal": {
+          "image_count": 244,
+          "annotation_count": 665
+        },
+        "lesion": {
+          "image_count": 105,
+          "annotation_count": 146
+        },
+        "cavity": {
+          "image_count": 208,
+          "annotation_count": 347
+        },
+        "_summary": {
+          "total_images": 4963,
+          "annotated_images": 445,
+          "unannotated_images": 4518
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.117846"
+    },
+    "7": {
+      "project_id": 7,
+      "project_title": "Pearl comparison Dr Mamta",
+      "timestamp": "2025-11-08T02:23:43.865611",
+      "metrics": {
+        "cavity": {
+          "image_count": 15,
+          "annotation_count": 15
+        },
+        "lesion": {
+          "image_count": 2,
+          "annotation_count": 2
+        },
+        "calculus": {
+          "image_count": 5,
+          "annotation_count": 6
+        },
+        "_summary": {
+          "total_images": 44,
+          "annotated_images": 44,
+          "unannotated_images": 0
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.119488"
+    },
+    "6": {
+      "project_id": 6,
+      "project_title": "IOPA PA Pathology Dr. Apoorva",
+      "timestamp": "2025-11-08T02:24:43.850354",
+      "metrics": {
+        "cavity": {
+          "image_count": 1869,
+          "annotation_count": 10117
+        },
+        "lesion": {
+          "image_count": 315,
+          "annotation_count": 369
+        },
+        "calculus": {
+          "image_count": 111,
+          "annotation_count": 204
+        },
+        "attrition": {
+          "image_count": 71,
+          "annotation_count": 137
+        },
+        "_summary": {
+          "total_images": 2020,
+          "annotated_images": 2020,
+          "unannotated_images": 0
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.121499"
+    },
+    "5": {
+      "project_id": 5,
+      "project_title": "IOPA PA Pathology Dr. Mamta",
+      "timestamp": "2025-11-08T02:25:37.974806",
+      "metrics": {
+        "cavity": {
+          "image_count": 1584,
+          "annotation_count": 4859
+        },
+        "lesion": {
+          "image_count": 277,
+          "annotation_count": 338
+        },
+        "calculus": {
+          "image_count": 6,
+          "annotation_count": 7
+        },
+        "attrition": {
+          "image_count": 1,
+          "annotation_count": 1
+        },
+        "_summary": {
+          "total_images": 2020,
+          "annotated_images": 2019,
+          "unannotated_images": 1
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.122977"
+    },
+    "4": {
+      "project_id": 4,
+      "project_title": "IOPA PA Pathology Dr. Jinal",
+      "timestamp": "2025-11-08T02:26:35.661878",
+      "metrics": {
+        "cavity": {
+          "image_count": 1592,
+          "annotation_count": 2803
+        },
+        "lesion": {
+          "image_count": 966,
+          "annotation_count": 1402
+        },
+        "attrition": {
+          "image_count": 94,
+          "annotation_count": 140
+        },
+        "_summary": {
+          "total_images": 2173,
+          "annotated_images": 2111,
+          "unannotated_images": 62
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.125121"
+    },
+    "3": {
+      "project_id": 3,
+      "project_title": "PreAnnotated_ToothPartsIOPA",
+      "timestamp": "2025-11-08T02:28:18.080206",
+      "metrics": {
+        "_summary": {
+          "total_images": 2084,
+          "annotated_images": 0,
+          "unannotated_images": 2084
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.127308"
+    },
+    "2": {
+      "project_id": 2,
+      "project_title": "PreAnnotated_NonPathologyIOPA",
+      "timestamp": "2025-11-08T02:29:05.984826",
+      "metrics": {
+        "lesion": {
+          "image_count": 3,
+          "annotation_count": 3
+        },
+        "cavity": {
+          "image_count": 2,
+          "annotation_count": 5
+        },
+        "_summary": {
+          "total_images": 2084,
+          "annotated_images": 3,
+          "unannotated_images": 2081
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.129086"
+    },
+    "1": {
+      "project_id": 1,
+      "project_title": "PreAnnotated_PathologyIOPA",
+      "timestamp": "2025-11-08T02:29:48.914282",
+      "metrics": {
+        "cavity": {
+          "image_count": 2,
+          "annotation_count": 3
+        },
+        "_summary": {
+          "total_images": 2084,
+          "annotated_images": 2,
+          "unannotated_images": 2082
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.131072"
+    }
+  },
+  "categories": {
+    "Pathology": {
+      "category": "Pathology",
+      "timestamp": "2025-11-08T02:29:50.400760",
+      "metrics": {
+        "lesion": {
+          "OPG": {
+            "images": 1711,
+            "annotations": 2039
+          },
+          "IOPA": {
+            "images": 1389,
+            "annotations": 1920
+          }
+        },
+        "cavity": {
+          "Bitewing": {
+            "images": 340,
+            "annotations": 4831
+          },
+          "OPG": {
+            "images": 4933,
+            "annotations": 9508
+          },
+          "IOPA": {
+            "images": 3673,
+            "annotations": 13275
+          }
+        },
+        "calculus": {
+          "OPG": {
+            "images": 11,
+            "annotations": 13
+          },
+          "IOPA": {
+            "images": 111,
+            "annotations": 204
+          }
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.132789"
+    },
+    "Non-Pathology": {
+      "category": "Non-Pathology",
+      "timestamp": "2025-11-08T02:29:52.130253",
+      "metrics": {
+        "filling": {
+          "Bitewing": {
+            "images": 326,
+            "annotations": 1657
+          },
+          "OPG": {
+            "images": 1530,
+            "annotations": 1945
+          },
+          "IOPA": {
+            "images": 189,
+            "annotations": 415
+          }
+        },
+        "rootcanal": {
+          "OPG": {
+            "images": 3500,
+            "annotations": 7325
+          },
+          "IOPA": {
+            "images": 244,
+            "annotations": 665
+          }
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.134770"
+    },
+    "Tooth Parts": {
+      "category": "Tooth Parts",
+      "timestamp": "2025-11-08T02:29:53.874655",
+      "metrics": {
+        "enamel": {
+          "OPG": {
+            "images": 599,
+            "annotations": 618
+          }
+        },
+        "pulp": {
+          "Bitewing": {
+            "images": 339,
+            "annotations": 1626
+          },
+          "OPG": {
+            "images": 4093,
+            "annotations": 8296
+          },
+          "IOPA": {
+            "images": 382,
+            "annotations": 843
+          }
+        },
+        "bone": {
+          "Bitewing": {
+            "images": 340,
+            "annotations": 2024
+          },
+          "OPG": {
+            "images": 5286,
+            "annotations": 9574
+          },
+          "IOPA": {
+            "images": 445,
+            "annotations": 1403
+          }
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.136404"
+    },
+    "Others": {
+      "category": "Others",
+      "timestamp": "2025-11-08T02:29:55.610748",
+      "metrics": {
+        "attrition": {
+          "IOPA": {
+            "images": 165,
+            "annotations": 277
+          },
+          "OPG": {
+            "images": 1,
+            "annotations": 1
+          }
+        }
+      },
+      "note": "",
+      "marked_at": "2025-11-08T10:37:30.138276"
+    }
+  },
+  "classes": {
+    "cavity_Bitewing": {
+      "class_name": "cavity",
+      "xray_type": "Bitewing",
+      "timestamp": "2025-11-19T08:41:31.949187",
+      "metrics": {
+        "images": 1097,
+        "annotations": 14578
+      },
+      "note": "",
+      "marked_at": "2025-11-19T08:41:31.949216"
+    },
+    "filling_Bitewing": {
+      "class_name": "filling",
+      "xray_type": "Bitewing",
+      "timestamp": "2025-11-19T08:41:53.457260",
+      "metrics": {
+        "images": 960,
+        "annotations": 4106
+      },
+      "note": "",
+      "marked_at": "2025-11-19T08:41:53.457299"
+    },
+    "pulp_Bitewing": {
+      "class_name": "pulp",
+      "xray_type": "Bitewing",
+      "timestamp": "2025-11-19T08:42:06.815576",
+      "metrics": {
+        "images": 1095,
+        "annotations": 5963
+      },
+      "note": "",
+      "marked_at": "2025-11-19T08:42:06.815600"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-11-07T09:47:15.973701",
+  "metrics": {
+    "_summary": {
+      "total_images": 2084,
+      "annotated_images": 0,
+      "unannotated_images": 2084
+    }
+  }
+}
