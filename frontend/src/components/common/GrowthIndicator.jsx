@@ -1,23 +1,61 @@
 import React from 'react';
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { formatNumber } from '../../utils/formatters';
 
 const GrowthIndicator = ({ current, checkpoint, kaggle, growth, growthPct }) => {
+    // Gauge data
+    const gaugeData = [
+        { name: 'Growth', value: Math.min(Math.max(growthPct, 0), 100) },
+        { name: 'Remaining', value: 100 - Math.min(Math.max(growthPct, 0), 100) }
+    ];
+
+    // Colors
+    const COLORS = ['#ffffff', 'rgba(255, 255, 255, 0.2)'];
+
     return (
         <div
-            className="p-6 rounded-lg text-center mb-6 text-white"
+            className="p-6 rounded-lg text-white mb-6 flex flex-col md:flex-row items-center justify-between"
             style={{ background: 'linear-gradient(90deg, #28a745 0%, #20c997 100%)' }}
         >
-            <h2 className="text-2xl font-bold m-0">📈 Total Dataset Growth</h2>
-            <h1 className="text-5xl font-bold my-4">+{formatNumber(growth)}</h1>
-            <p className="text-xl mb-4">
-                images ({growthPct >= 0 ? '+' : ''}{growthPct.toFixed(1)}% from checkpoint)
-            </p>
-            <hr className="border-white opacity-30 my-4" />
-            <p className="text-lg">
-                <strong>Current:</strong> {formatNumber(current)} images | {' '}
-                <strong>Kaggle:</strong> {formatNumber(kaggle)} images | {' '}
-                <strong>Total:</strong> {formatNumber(current + kaggle)} images
-            </p>
+            <div className="flex-1 text-center md:text-left">
+                <h2 className="text-2xl font-bold m-0">📈 Total Dataset Growth</h2>
+                <h1 className="text-5xl font-bold my-4">+{formatNumber(growth)}</h1>
+                <p className="text-xl mb-4">
+                    images ({growthPct >= 0 ? '+' : ''}{growthPct.toFixed(1)}% from checkpoint)
+                </p>
+                <div className="text-lg opacity-90">
+                    <strong>Current:</strong> {formatNumber(current)} | {' '}
+                    <strong>Kaggle:</strong> {formatNumber(kaggle)} | {' '}
+                    <strong>Total:</strong> {formatNumber(current + kaggle)}
+                </div>
+            </div>
+
+            {/* Gauge Chart */}
+            <div className="w-48 h-24 relative mt-4 md:mt-0">
+                <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                        <Pie
+                            data={gaugeData}
+                            cx="50%"
+                            cy="100%"
+                            startAngle={180}
+                            endAngle={0}
+                            innerRadius={60}
+                            outerRadius={80}
+                            paddingAngle={0}
+                            dataKey="value"
+                            stroke="none"
+                        >
+                            {gaugeData.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie>
+                    </PieChart>
+                </ResponsiveContainer>
+                <div className="absolute bottom-0 left-0 right-0 text-center mb-[-5px]">
+                    <span className="text-xl font-bold">{growthPct.toFixed(0)}%</span>
+                </div>
+            </div>
         </div>
     );
 };

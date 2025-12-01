@@ -115,7 +115,7 @@ function App() {
             case 'classes':
                 return <ClassesTab />;
             case 'checkpoints':
-                return <CheckpointsTab />;
+                return <CheckpointsTab projects={projects} />;
             case 'kaggle':
                 return <KaggleDataEditor />;
             case 'metrics':

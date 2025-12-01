@@ -5,6 +5,11 @@ import CheckpointButton from '../common/CheckpointButton';
 import { XRAY_TYPES } from '../../utils/constants';
 import { categoriesAPI, checkpointsAPI } from '../../services/api';
 
+import ChartContainer from '../charts/ChartContainer';
+import ClassPieChart from '../charts/ClassPieChart';
+import ProgressBarChart from '../charts/ProgressBarChart';
+import { CHART_COLORS, getModalityColor } from '../../utils/colorPalette';
+
 const CategorySection = ({
     category,
     classes,
@@ -18,6 +23,34 @@ const CategorySection = ({
     const [loadingHistory, setLoadingHistory] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
     const categoryCheckpoint = checkpoints?.categories?.[category];
+
+    // Process data for charts
+    const modalityData = React.useMemo(() => {
+        if (!metrics) return [];
+        return ['OPG', 'Bitewing', 'IOPA'].map(type => {
+            const typeMetrics = metrics[type] || {};
+            const total = Object.values(typeMetrics).reduce((sum, m) => sum + (m.image_count || 0), 0);
+            return { name: type, value: total };
+        }).filter(d => d.value > 0);
+    }, [metrics]);
+
+    const classComparisonData = React.useMemo(() => {
+        if (!metrics || !classes) return [];
+
+        return classes.map(className => {
+            const opgCount = metrics.OPG?.[className]?.image_count || 0;
+            const bwCount = metrics.Bitewing?.[className]?.image_count || 0;
+            const iopaCount = metrics.IOPA?.[className]?.image_count || 0;
+
+            return {
+                name: className,
+                OPG: opgCount,
+                Bitewing: bwCount,
+                IOPA: iopaCount,
+                total: opgCount + bwCount + iopaCount
+            };
+        }).filter(d => d.total > 0).sort((a, b) => b.total - a.total);
+    }, [metrics, classes]);
 
     const handleViewHistory = async () => {
         setLoadingHistory(true);
@@ -110,6 +143,37 @@ const CategorySection = ({
                 </div>
             </div>
 
+
+
+            {/* Visualizations */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6 mb-6">
+                <ChartContainer
+                    title="Modality Distribution"
+                    subtitle="Images by X-ray type"
+                    height={250}
+                    loading={!modalityData.length}
+                >
+                    <ClassPieChart
+                        data={modalityData}
+                        colors={modalityData.map(d => getModalityColor(d.name))}
+                    />
+                </ChartContainer>
+
+                <ChartContainer
+                    title="Class Breakdown"
+                    subtitle="Distribution across modalities"
+                    height={250}
+                    loading={!classComparisonData.length}
+                >
+                    <ProgressBarChart
+                        data={classComparisonData}
+                        dataKeys={['OPG', 'Bitewing', 'IOPA']}
+                        colors={[CHART_COLORS.opg, CHART_COLORS.bitewing, CHART_COLORS.iopa]}
+                        stacked={true}
+                    />
+                </ChartContainer>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
                 {Object.keys(XRAY_TYPES).map(xrayType => (
                     <ClassMetricsTable
@@ -125,25 +189,27 @@ const CategorySection = ({
             </div>
 
             {/* History Modal */}
-            {showHistory && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                    <div className="bg-white rounded-lg max-w-3xl w-full max-h-[80vh] overflow-hidden flex flex-col">
-                        <div className="p-6 border-b flex justify-between items-center">
-                            <h2 className="text-xl font-bold">{category} - History</h2>
-                            <button
-                                onClick={() => setShowHistory(false)}
-                                className="text-gray-500 hover:text-gray-700 text-2xl"
-                            >
-                                ✕
-                            </button>
-                        </div>
-                        <div className="p-6 overflow-y-auto">
-                            <HistoryViewer history={history} type="category" />
+            {
+                showHistory && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                        <div className="bg-white rounded-lg max-w-3xl w-full max-h-[80vh] overflow-hidden flex flex-col">
+                            <div className="p-6 border-b flex justify-between items-center">
+                                <h2 className="text-xl font-bold">{category} - History</h2>
+                                <button
+                                    onClick={() => setShowHistory(false)}
+                                    className="text-gray-500 hover:text-gray-700 text-2xl"
+                                >
+                                    ✕
+                                </button>
+                            </div>
+                            <div className="p-6 overflow-y-auto">
+                                <HistoryViewer history={history} type="category" />
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )
+            }
+        </div >
     );
 };
 

@@ -3,6 +3,11 @@ import { kaggleAPI } from '../../services/api';
 import { CLASS_CATEGORIES, XRAY_TYPES } from '../../utils/constants';
 import LoadingSpinner from '../common/LoadingSpinner';
 
+import ChartContainer from '../charts/ChartContainer';
+import ClassPieChart from '../charts/ClassPieChart';
+import ProgressBarChart from '../charts/ProgressBarChart';
+import { CHART_COLORS } from '../../utils/colorPalette';
+
 const KaggleDataEditor = () => {
     const [kaggleData, setKaggleData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -24,6 +29,54 @@ const KaggleDataEditor = () => {
             setLoading(false);
         }
     };
+
+    // Process data for charts - showing individual classes
+    const classDistributionData = React.useMemo(() => {
+        if (!editedData) return [];
+
+        const classData = [];
+        Object.entries(editedData).forEach(([category, classes]) => {
+            Object.entries(classes).forEach(([className, xrayData]) => {
+                let total = 0;
+                Object.values(xrayData).forEach(type => {
+                    total += (type.images || 0);
+                });
+                if (total > 0) {
+                    classData.push({ name: className, value: total });
+                }
+            });
+        });
+
+        // Sort by value descending and take top 10 for readability
+        return classData.sort((a, b) => b.value - a.value).slice(0, 10);
+    }, [editedData]);
+
+    const modalityDistributionData = React.useMemo(() => {
+        if (!editedData) return [];
+
+        const classData = [];
+        Object.entries(editedData).forEach(([category, classes]) => {
+            Object.entries(classes).forEach(([className, xrayData]) => {
+                const opg = xrayData.OPG?.images || 0;
+                const bw = xrayData.Bitewing?.images || 0;
+                const iopa = xrayData.IOPA?.images || 0;
+                const total = opg + bw + iopa;
+
+                if (total > 0) {
+                    classData.push({
+                        name: className,
+                        OPG: opg,
+                        Bitewing: bw,
+                        IOPA: iopa,
+                        total: total
+                    });
+                }
+            });
+        });
+
+        // Sort by total descending and take top 10
+        return classData.sort((a, b) => b.total - a.total).slice(0, 10);
+    }, [editedData]);
 
     const handleChange = (category, className, xrayType, value) => {
         setEditedData(prev => ({
@@ -82,6 +135,33 @@ const KaggleDataEditor = () => {
                 Manage the number of images available in the Kaggle dataset.
                 Counts are broken down by X-ray type (OPG, Bitewing, IOPA).
             </p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <ChartContainer
+                    title="Top Classes Distribution"
+                    subtitle="Top 10 classes by image count"
+                    height={300}
+                    loading={!classDistributionData.length}
+                >
+                    <ClassPieChart
+                        data={classDistributionData}
+                    />
+                </ChartContainer>
+
+                <ChartContainer
+                    title="Top Classes by Modality"
+                    subtitle="X-ray type breakdown for top 10 classes"
+                    height={300}
+                    loading={!modalityDistributionData.length}
+                >
+                    <ProgressBarChart
+                        data={modalityDistributionData}
+                        dataKeys={['OPG', 'Bitewing', 'IOPA']}
+                        colors={[CHART_COLORS.opg, CHART_COLORS.bitewing, CHART_COLORS.iopa]}
+                        stacked={true}
+                    />
+                </ChartContainer>
+            </div>
 
             <div className="grid grid-cols-1 gap-6">
                 {Object.entries(CLASS_CATEGORIES).map(([category, classes]) => (

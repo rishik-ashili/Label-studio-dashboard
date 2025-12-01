@@ -7,6 +7,15 @@ import LoadingSpinner from '../common/LoadingSpinner';
  * Data Metrics View - Combined Kaggle + Label Studio
  * Shows class-wise breakdown across all X-ray modalities (OPG, Bitewing, IOPA)
  */
+import ChartContainer from '../charts/ChartContainer';
+import ProgressBarChart from '../charts/ProgressBarChart';
+import ClassPieChart from '../charts/ClassPieChart';
+import { CHART_COLORS, getModalityColor } from '../../utils/colorPalette';
+
+/**
+ * Data Metrics View - Combined Kaggle + Label Studio
+ * Shows class-wise breakdown across all X-ray modalities (OPG, Bitewing, IOPA)
+ */
 const DataMetricsView = () => {
     const [combinedData, setCombinedData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -34,26 +43,74 @@ const DataMetricsView = () => {
         await fetchData();
     };
 
-    if (loading) return <LoadingSpinner message="Loading metrics..." />;
-    if (!combinedData) return <div className="text-center py-8">No data available</div>;
+    // Process data for charts
+    const modalityComparisonData = React.useMemo(() => {
+        if (!combinedData) return [];
+
+        const modalities = ['OPG', 'Bitewing', 'IOPA'];
+        return modalities.map(modality => {
+            let kaggle = 0;
+            let ls = 0;
+
+            Object.values(combinedData).forEach(classData => {
+                if (classData[modality]) {
+                    kaggle += classData[modality].kaggle_images || 0;
+                    ls += classData[modality].ls_images || 0;
+                }
+            });
+
+            return {
+                name: modality,
+                Kaggle: kaggle,
+                'Label Studio': ls,
+                Total: kaggle + ls
+            };
+        });
+    }, [combinedData]);
+
+    const sourceDistributionData = React.useMemo(() => {
+        if (!combinedData) return [];
+
+        let totalKaggle = 0;
+        let totalLS = 0;
+
+        Object.values(combinedData).forEach(classData => {
+            ['OPG', 'Bitewing', 'IOPA'].forEach(modality => {
+                if (classData[modality]) {
+                    totalKaggle += classData[modality].kaggle_images || 0;
+                    totalLS += classData[modality].ls_images || 0;
+                }
+            });
+        });
+
+        return [
+            { name: 'Kaggle', value: totalKaggle },
+            { name: 'Label Studio', value: totalLS }
+        ];
+    }, [combinedData]);
 
     // Organize data by category
-    const dataByCategory = {};
-    for (const [className, xrayData] of Object.entries(combinedData)) {
-        let category = 'Others';
-        for (const [cat, classList] of Object.entries(CLASS_CATEGORIES)) {
-            if (classList.includes(className)) {
-                category = cat;
-                break;
+    const dataByCategory = React.useMemo(() => {
+        if (!combinedData) return {};
+
+        const organized = {};
+        for (const [className, xrayData] of Object.entries(combinedData)) {
+            let category = 'Others';
+            for (const [cat, classList] of Object.entries(CLASS_CATEGORIES)) {
+                if (classList.includes(className)) {
+                    category = cat;
+                    break;
+                }
             }
-        }
 
-        if (!dataByCategory[category]) {
-            dataByCategory[category] = [];
-        }
+            if (!organized[category]) {
+                organized[category] = [];
+            }
 
-        dataByCategory[category].push({ className, ...xrayData });
-    }
+            organized[category].push({ className, ...xrayData });
+        }
+        return organized;
+    }, [combinedData]);
 
     const handleSort = (key) => {
         let direction = 'asc';
@@ -124,6 +181,36 @@ const DataMetricsView = () => {
                         <span>Download CSV</span>
                     </button>
                 </div>
+            </div>
+
+
+
+            {/* Visualizations */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <ChartContainer
+                    title="Modality Comparison"
+                    subtitle="Kaggle vs Label Studio by X-ray type"
+                    height={300}
+                    loading={!modalityComparisonData.length}
+                >
+                    <ProgressBarChart
+                        data={modalityComparisonData}
+                        dataKeys={['Kaggle', 'Label Studio']}
+                        colors={[CHART_COLORS.kaggle, CHART_COLORS.ls]}
+                    />
+                </ChartContainer>
+
+                <ChartContainer
+                    title="Overall Source Distribution"
+                    subtitle="Total dataset composition"
+                    height={300}
+                    loading={!sourceDistributionData.length}
+                >
+                    <ClassPieChart
+                        data={sourceDistributionData}
+                        colors={[CHART_COLORS.kaggle, CHART_COLORS.ls]}
+                    />
+                </ChartContainer>
             </div>
 
             <div className="bg-white rounded-lg shadow overflow-hidden">
@@ -251,7 +338,7 @@ const DataMetricsView = () => {
                 <p><strong>LS:</strong> Label Studio annotated images</p>
                 <p><strong>Total:</strong> Combined dataset size</p>
             </div>
-        </div>
+        </div >
     );
 };
 

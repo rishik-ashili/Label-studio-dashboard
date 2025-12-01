@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { projectsAPI, checkpointsAPI } from '../../services/api';
 import LoadingSpinner from '../common/LoadingSpinner';
 import HistoryViewer from '../common/HistoryViewer';
 import { formatDate, formatNumber } from '../../utils/formatters';
 import { calculateDelta } from '../../utils/formatters';
+import ChartContainer from '../charts/ChartContainer';
+import TimelineChart from '../charts/TimelineChart';
+import ClassPieChart from '../charts/ClassPieChart';
+import ProgressBarChart from '../charts/ProgressBarChart';
+import { processTimelineData, processClassDistribution, processCheckpointComparison, calculateProgressMetrics } from '../../utils/chartDataProcessors';
+import { getClassColor } from '../../utils/colorPalette';
+import { CHART_COLORS } from '../../utils/colorPalette';
 
 const ProjectDetails = ({ project, onBack }) => {
     const [projectData, setProjectData] = useState(null);
@@ -65,6 +72,35 @@ const ProjectDetails = ({ project, onBack }) => {
         }
     };
 
+    // Process data for charts
+    const latest = projectData?.history?.[projectData.history.length - 1];
+
+    const timelineData = useMemo(() => {
+        if (!projectData || !projectData.history) return [];
+        return processTimelineData(projectData.history);
+    }, [projectData]);
+
+    const classDistributionData = useMemo(() => {
+        if (!projectData || !latest) return [];
+        return processClassDistribution(latest.metrics);
+    }, [projectData, latest]);
+
+    const progressData = useMemo(() => {
+        if (!projectData || !projectData.history) return [];
+        const metrics = calculateProgressMetrics(projectData.history);
+        return [
+            { name: 'Today', value: metrics.today },
+            { name: 'Yesterday', value: metrics.yesterday },
+            { name: 'This Week', value: metrics.week },
+            { name: 'This Month', value: metrics.month }
+        ];
+    }, [projectData]);
+
+    const checkpointComparisonData = useMemo(() => {
+        if (!latest || !checkpoint) return [];
+        return processCheckpointComparison(latest.metrics, checkpoint.metrics);
+    }, [latest, checkpoint]);
+
     if (loading) {
         return <LoadingSpinner message="Loading project details..." />;
     }
@@ -83,7 +119,7 @@ const ProjectDetails = ({ project, onBack }) => {
     }
 
     const history = projectData.history;
-    const latest = history[history.length - 1];
+    // latest is already defined above
     const metrics = latest.metrics;
     const summary = metrics._summary || {};
     const previous = history.length >= 2 ? history[history.length - 2].metrics : null;
@@ -170,6 +206,70 @@ const ProjectDetails = ({ project, onBack }) => {
                     <p className="text-sm text-gray-600">Unannotated Images</p>
                     <p className="text-2xl font-bold">{summary.unannotated_images || 0}</p>
                 </div>
+            </div>
+
+            <hr className="my-6" />
+
+            {/* Data Visualizations */}
+            <h2 className="text-2xl font-bold mb-4">📊 Data Visualizations</h2>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                {/* Timeline Chart */}
+                <ChartContainer
+                    title="Annotation Progress Timeline"
+                    subtitle="Total images over time"
+                    height={300}
+                    loading={!timelineData.length}
+                >
+                    <TimelineChart
+                        data={timelineData}
+                        dataKeys={['total']}
+                        colors={[CHART_COLORS.primary]}
+                    />
+                </ChartContainer>
+
+                {/* Class Distribution Pie Chart */}
+                <ChartContainer
+                    title="Class Distribution"
+                    subtitle="Current distribution across classes"
+                    height={300}
+                    loading={!classDistributionData.length}
+                >
+                    <ClassPieChart
+                        data={classDistributionData}
+                        colors={classDistributionData.map(item => getClassColor(item.name))}
+                    />
+                </ChartContainer>
+
+                {/* Progress Comparison Bar Chart */}
+                <ChartContainer
+                    title="Recent Activity"
+                    subtitle="Image count changes over time periods"
+                    height={300}
+                    loading={!progressData.length}
+                >
+                    <ProgressBarChart
+                        data={progressData}
+                        dataKeys={['value']}
+                        colors={[CHART_COLORS.success]}
+                    />
+                </ChartContainer>
+
+                {/* Checkpoint Comparison */}
+                {checkpoint && (
+                    <ChartContainer
+                        title="Growth Since Checkpoint"
+                        subtitle={`Comparing current vs checkpoint (${formatDate(checkpoint.timestamp)})`}
+                        height={300}
+                        loading={!checkpointComparisonData.length}
+                    >
+                        <ProgressBarChart
+                            data={checkpointComparisonData}
+                            dataKeys={['current', 'checkpoint']}
+                            colors={[CHART_COLORS.primary, CHART_COLORS.gray]}
+                        />
+                    </ChartContainer>
+                )}
             </div>
 
             <hr className="my-4" />
