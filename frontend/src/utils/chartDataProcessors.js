@@ -108,19 +108,20 @@ export const calculateProgressMetrics = (history) => {
 
     const now = new Date();
 
-    // Start of Today (00:00:00)
-    const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    // Use UTC dates to match the UTC timestamps in history
+    // Start of Today (00:00:00 UTC)
+    const startOfToday = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
 
-    // Start of Yesterday
+    // Start of Yesterday (UTC)
     const startOfYesterday = new Date(startOfToday);
-    startOfYesterday.setDate(startOfYesterday.getDate() - 1);
+    startOfYesterday.setUTCDate(startOfYesterday.getUTCDate() - 1);
 
-    // Start of This Week (Sunday)
+    // Start of This Week (Sunday, UTC)
     const startOfWeek = new Date(startOfToday);
-    startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay());
+    startOfWeek.setUTCDate(startOfWeek.getUTCDate() - startOfWeek.getUTCDay());
 
-    // Start of This Month (1st)
-    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    // Start of This Month (1st, UTC)
+    const startOfMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
 
     // Calculate annotated counts at each point
     const annotatedStartToday = getAnnotatedAtOrBeforeDate(startOfToday);
@@ -137,7 +138,13 @@ export const calculateProgressMetrics = (history) => {
     console.log('Progress Metrics Debug (Annotated Images):', {
         currentAnnotated,
         startOfToday: startOfToday.toISOString(),
+        startOfYesterday: startOfYesterday.toISOString(),
+        startOfWeek: startOfWeek.toISOString(),
+        startOfMonth: startOfMonth.toISOString(),
         annotatedStartToday,
+        annotatedStartYesterday,
+        annotatedStartWeek,
+        annotatedStartMonth,
         todayGrowth,
         yesterdayGrowth,
         weekGrowth,
