@@ -1,4 +1,5 @@
 import axios from 'axios';
+import logger from '../utils/logger';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
@@ -8,6 +9,44 @@ const api = axios.create({
         'Content-Type': 'application/json'
     }
 });
+
+// Request interceptor - log all outgoing requests
+api.interceptors.request.use(
+    (config) => {
+        logger.info('api:request', `${config.method.toUpperCase()} ${config.url}`, {
+            params: config.params,
+            data: config.method !== 'get' ? config.data : undefined
+        });
+        return config;
+    },
+    (error) => {
+        logger.error('api:request', 'Request failed to send', {
+            error: error.message
+        });
+        return Promise.reject(error);
+    }
+);
+
+// Response interceptor - log all responses and errors
+api.interceptors.response.use(
+    (response) => {
+        logger.debug('api:response', `${response.config.method.toUpperCase()} ${response.config.url} - ${response.status}`);
+        return response;
+    },
+    (error) => {
+        const message = error.response
+            ? `${error.config?.method?.toUpperCase()} ${error.config?.url} - ${error.response.status}`
+            : `${error.config?.method?.toUpperCase()} ${error.config?.url} - Network Error`;
+
+        logger.error('api:error', message, {
+            status: error.response?.status,
+            statusText: error.response?.statusText,
+            error: error.message,
+            url: error.config?.url
+        });
+        return Promise.reject(error);
+    }
+);
 
 // Projects
 export const projectsAPI = {

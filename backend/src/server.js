@@ -11,10 +11,12 @@ import notificationsRoutes from './routes/notifications.js';
 import schedulerRoutes from './routes/scheduler.js';
 import categoriesRoutes from './routes/categories.js';
 import metricsRoutes from './routes/metrics.js';
+import logRoutes, { logToRecent } from './routes/logRoutes.js';
 
 // Import services (to initialize)
 import storage from './storage/fileStorage.js';
 import schedulerService from './services/schedulerService.js';
+import { requestLogger, errorLogger, logInfo } from './utils/logger.js';
 
 dotenv.config();
 
@@ -27,6 +29,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(requestLogger); // Add request logging
 
 // API Routes
 app.use('/api/projects', projectsRoutes);
@@ -35,13 +38,16 @@ app.use('/api/notifications', notificationsRoutes);
 app.use('/api/scheduler', schedulerRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/metrics', metricsRoutes);
+app.use('/api/logs', logRoutes); // Add logs API
 
 // Kaggle data endpoints
 app.get('/api/kaggle', async (req, res) => {
     try {
+        logInfo('kaggle:api', 'Fetching Kaggle data');
         const data = await storage.loadKaggleData();
         res.json(data);
     } catch (error) {
+        logError('kaggle:api', 'Failed to fetch Kaggle data', { error: error.message });
         res.status(500).json({ error: error.message });
     }
 });
@@ -49,13 +55,16 @@ app.get('/api/kaggle', async (req, res) => {
 app.put('/api/kaggle/:category', async (req, res) => {
     try {
         const category = req.params.category;
-        const data = await storage.loadKaggleData();
+        logInfo('kaggle:api', `Updating Kaggle data for category: ${category}`);
 
+        const data = await storage.loadKaggleData();
         data[category] = req.body;
         await storage.saveKaggleData(data);
 
+        logToRecent('info', 'kaggle:api', `Successfully updated ${category}`, { category });
         res.json({ success: true });
     } catch (error) {
+        logError('kaggle:api', 'Failed to update Kaggle data', { error: error.message, category: req.params.category });
         res.status(500).json({ error: error.message });
     }
 });
@@ -79,8 +88,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Error handling middleware
+app.use(errorLogger);
 app.use((err, req, res, next) => {
-    console.error('Server error:', err);
     res.status(500).json({
         error: 'Internal server error',
         message: err.message
@@ -89,7 +98,16 @@ app.use((err, req, res, next) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`🚀 Label Studio Dashboard API running on port ${PORT}`);
+    const startupMessage = `🚀 Label Studio Dashboard API running on port ${PORT}`;
+    console.log(startupMessage);
     console.log(`📊 Label Studio URL: ${process.env.LABEL_STUDIO_URL}`);
     console.log(`📁 Cache directory: ${process.env.CACHE_DIR || './storage/cache'}`);
+
+    logInfo('server', startupMessage, {
+        port: PORT,
+        labelStudioUrl: process.env.LABEL_STUDIO_URL,
+        cacheDir: process.env.CACHE_DIR || './storage/cache'
+    });
+
+    logToRecent('info', 'server', 'Server started successfully', { port: PORT });
 });

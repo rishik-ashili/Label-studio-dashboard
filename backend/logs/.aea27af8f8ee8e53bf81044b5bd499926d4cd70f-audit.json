@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "D:\\Dobbe ai\\label studio dashboard\\react-dashboard\\backend\\logs\\.aea27af8f8ee8e53bf81044b5bd499926d4cd70f-audit.json",
+    "files": [
+        {
+            "date": 1764606136511,
+            "name": "D:\\Dobbe ai\\label studio dashboard\\react-dashboard\\backend\\logs\\application-2025-12-01.log",
+            "hash": "08683faf523e12375594c19539814d8f9faed10ba818e9c7f30d1617bd9c8945"
+        }
+    ],
+    "hashType": "sha256"
+}

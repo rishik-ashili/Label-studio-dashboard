@@ -1,31 +1,9 @@
 import React, { useState } from 'react';
 import SchedulerSettings from '../scheduler/SchedulerSettings';
+import ApplicationLogs from './ApplicationLogs';
 import { schedulerAPI } from '../../services/api';
 
 const SettingsTab = ({ labelStudioUrl, onRefreshAll, refreshing }) => {
-    const [showLogs, setShowLogs] = useState(false);
-    const [logs, setLogs] = useState('');
-    const [loadingLogs, setLoadingLogs] = useState(false);
-
-    const handleViewLogs = async () => {
-        if (showLogs) {
-            setShowLogs(false);
-            return;
-        }
-
-        setLoadingLogs(true);
-        setShowLogs(true);
-        try {
-            const response = await schedulerAPI.getLogs();
-            setLogs(response.data.logs || 'No logs available');
-        } catch (error) {
-            console.error('Error fetching logs:', error);
-            setLogs('Failed to load logs');
-        } finally {
-            setLoadingLogs(false);
-        }
-    };
-
     return (
         <div className="max-w-4xl">
             <h2 className="text-3xl font-bold mb-6">⚙️ Settings</h2>
@@ -48,26 +26,6 @@ const SettingsTab = ({ labelStudioUrl, onRefreshAll, refreshing }) => {
                 <h3 className="text-xl font-semibold mb-4">🔄 Auto-Refresh Scheduler</h3>
 
                 <SchedulerSettings />
-
-                {/* Logs Viewer */}
-                <div className="mt-6 pt-6 border-t">
-                    <div className="flex items-center justify-between mb-3">
-                        <h4 className="font-semibold">Scheduler Logs</h4>
-                        <button
-                            onClick={handleViewLogs}
-                            disabled={loadingLogs}
-                            className="px-4 py-2 text-sm bg-gray-600 hover:bg-gray-700 text-white rounded transition-colors disabled:opacity-50"
-                        >
-                            {loadingLogs ? 'Loading...' : showLogs ? 'Hide Logs' : 'View Recent Logs ▼'}
-                        </button>
-                    </div>
-
-                    {showLogs && (
-                        <div className="mt-3 bg-gray-900 text-green-400 p-4 rounded font-mono text-xs overflow-x-auto max-h-96 overflow-y-auto">
-                            <pre className="whitespace-pre-wrap">{logs}</pre>
-                        </div>
-                    )}
-                </div>
 
                 {/* Manual Refresh */}
                 <div className="mt-6 pt-6 border-t">
@@ -94,6 +52,9 @@ const SettingsTab = ({ labelStudioUrl, onRefreshAll, refreshing }) => {
                     </button>
                 </div>
             </div>
+
+            {/* Application Logs */}
+            <ApplicationLogs />
 
             {/* Additional Settings (Future) */}
             <div className="bg-white rounded-lg shadow p-6">
