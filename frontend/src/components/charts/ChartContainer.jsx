@@ -37,7 +37,7 @@ const ChartContainer = ({ title, subtitle, children, className = '', loading = f
                     {subtitle && <p className="text-sm text-slate-600 mt-1">{subtitle}</p>}
                 </div>
             )}
-            <div style={{ height: `${height}px` }}>
+            <div style={{ width: '100%', height: `${height}px` }}>
                 {children}
             </div>
         </div>

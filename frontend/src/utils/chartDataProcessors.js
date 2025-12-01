@@ -11,8 +11,8 @@ export const processTimelineData = (history) => {
     return history.map(entry => ({
         date: formatChartDate(entry.timestamp),
         timestamp: entry.timestamp,
-        total: entry._summary?.total_images || 0,
-        annotated: entry._summary?.total_annotated || 0,
+        total: entry.metrics?._summary?.annotated_images || 0,  // Access through metrics
+        annotated: entry.metrics?._summary?.annotated_images || 0,
         ...entry
     }));
 };
@@ -82,25 +82,28 @@ export const processModalityData = (combinedData) => {
 };
 
 /**
- * Calculate progress metrics (growth)
+ * Calculate progress metrics (growth) - tracks ANNOTATED images
  */
 export const calculateProgressMetrics = (history) => {
     if (!history || history.length === 0) {
         return { today: 0, yesterday: 0, week: 0, month: 0 };
     }
 
-    // Get current total
-    const currentTotal = history[history.length - 1]?._summary?.total_images || 0;
+    // Get current annotated count (most recent entry)
+    const currentAnnotated = history[history.length - 1]?.metrics?._summary?.annotated_images || 0;
 
-    // Helper to find count at a specific date (start of day)
-    const getCountAtDate = (targetDate) => {
-        // Find the first entry on or after the target date
-        const entry = history.find(h => {
-            const hDate = new Date(h.timestamp);
-            return hDate >= targetDate;
-        });
-
-        return entry?._summary?.total_images || 0;
+    // Helper to find annotated count at or before a specific date
+    const getAnnotatedAtOrBeforeDate = (targetDate) => {
+        // Find the last entry before or at the target date
+        let closestEntry = null;
+        for (let i = history.length - 1; i >= 0; i--) {
+            const entryDate = new Date(history[i].timestamp);
+            if (entryDate <= targetDate) {
+                closestEntry = history[i];
+                break;
+            }
+        }
+        return closestEntry?.metrics?._summary?.annotated_images || 0;
     };
 
     const now = new Date();
@@ -119,17 +122,29 @@ export const calculateProgressMetrics = (history) => {
     // Start of This Month (1st)
     const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
 
-    // Calculate counts at each point
-    const countStartToday = getCountAtDate(startOfToday);
-    const countStartYesterday = getCountAtDate(startOfYesterday);
-    const countStartWeek = getCountAtDate(startOfWeek);
-    const countStartMonth = getCountAtDate(startOfMonth);
+    // Calculate annotated counts at each point
+    const annotatedStartToday = getAnnotatedAtOrBeforeDate(startOfToday);
+    const annotatedStartYesterday = getAnnotatedAtOrBeforeDate(startOfYesterday);
+    const annotatedStartWeek = getAnnotatedAtOrBeforeDate(startOfWeek);
+    const annotatedStartMonth = getAnnotatedAtOrBeforeDate(startOfMonth);
 
-    // Calculate growth
-    const todayGrowth = Math.max(0, currentTotal - countStartToday);
-    const yesterdayGrowth = Math.max(0, countStartToday - countStartYesterday);
-    const weekGrowth = Math.max(0, currentTotal - countStartWeek);
-    const monthGrowth = Math.max(0, currentTotal - countStartMonth);
+    // Calculate growth in annotations
+    const todayGrowth = Math.max(0, currentAnnotated - annotatedStartToday);
+    const yesterdayGrowth = Math.max(0, annotatedStartToday - annotatedStartYesterday);
+    const weekGrowth = Math.max(0, currentAnnotated - annotatedStartWeek);
+    const monthGrowth = Math.max(0, currentAnnotated - annotatedStartMonth);
+
+    console.log('Progress Metrics Debug (Annotated Images):', {
+        currentAnnotated,
+        startOfToday: startOfToday.toISOString(),
+        annotatedStartToday,
+        todayGrowth,
+        yesterdayGrowth,
+        weekGrowth,
+        monthGrowth,
+        historyLength: history.length,
+        latestTimestamp: history[history.length - 1]?.timestamp
+    });
 
     return {
         today: todayGrowth,

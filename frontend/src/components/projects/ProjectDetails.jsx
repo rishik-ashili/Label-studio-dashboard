@@ -217,7 +217,7 @@ const ProjectDetails = ({ project, onBack }) => {
                 {/* Timeline Chart */}
                 <ChartContainer
                     title="Annotation Progress Timeline"
-                    subtitle="Total images over time"
+                    subtitle="Annotated images over time"
                     height={300}
                     loading={!timelineData.length}
                 >
