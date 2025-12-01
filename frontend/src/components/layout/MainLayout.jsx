@@ -1,17 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
 
-const MainLayout = ({ children, onRefreshAll, refreshing }) => {
-    const labelStudioUrl = import.meta.env.VITE_LABEL_STUDIO_URL || 'http://localhost:8080';
-
+const MainLayout = ({ activeTab, onTabChange, children }) => {
     return (
-        <div className="flex h-screen">
-            <Sidebar
-                labelStudioUrl={labelStudioUrl}
-                onRefreshAll={onRefreshAll}
-                refreshing={refreshing}
-            />
+        <div className="flex h-screen overflow-hidden">
+            <Sidebar activeTab={activeTab} onTabChange={onTabChange} />
 
             <div className="flex-1 flex flex-col overflow-hidden">
                 <Header />

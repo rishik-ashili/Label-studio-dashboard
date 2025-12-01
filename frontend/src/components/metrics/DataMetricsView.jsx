@@ -10,21 +10,29 @@ import LoadingSpinner from '../common/LoadingSpinner';
 const DataMetricsView = () => {
     const [combinedData, setCombinedData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [refreshing, setRefreshing] = useState(false);
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
 
+    const fetchData = async () => {
+        try {
+            const response = await metricsAPI.getCombined();
+            setCombinedData(response.data);
+        } catch (error) {
+            console.error('Error fetching combined metrics:', error);
+        } finally {
+            setLoading(false);
+            setRefreshing(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await metricsAPI.getCombined();
-                setCombinedData(response.data);
-            } catch (error) {
-                console.error('Error fetching combined metrics:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
         fetchData();
     }, []);
+
+    const refreshData = async () => {
+        setRefreshing(true);
+        await fetchData();
+    };
 
     if (loading) return <LoadingSpinner message="Loading metrics..." />;
     if (!combinedData) return <div className="text-center py-8">No data available</div>;
@@ -90,13 +98,32 @@ const DataMetricsView = () => {
         <div>
             <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold">📊 Combined Data Metrics</h2>
-                <button
-                    onClick={downloadCSV}
-                    className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors flex items-center gap-2"
-                >
-                    <span>📥</span>
-                    <span>Download CSV</span>
-                </button>
+                <div className="flex gap-3">
+                    <button
+                        onClick={refreshData}
+                        disabled={refreshing}
+                        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        {refreshing ? (
+                            <>
+                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                <span>Refreshing...</span>
+                            </>
+                        ) : (
+                            <>
+                                <span>🔄</span>
+                                <span>Refresh Data</span>
+                            </>
+                        )}
+                    </button>
+                    <button
+                        onClick={downloadCSV}
+                        className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors flex items-center gap-2"
+                    >
+                        <span>📥</span>
+                        <span>Download CSV</span>
+                    </button>
+                </div>
             </div>
 
             <div className="bg-white rounded-lg shadow overflow-hidden">

@@ -6,6 +6,8 @@ import ClassesTab from './components/classes/ClassesTab';
 import CheckpointsTab from './components/checkpoints/CheckpointsTab';
 import KaggleDataEditor from './components/kaggle/KaggleDataEditor';
 import DataMetricsView from './components/metrics/DataMetricsView';
+import SettingsTab from './components/settings/SettingsTab';
+import NotificationsTab from './components/notifications/NotificationsTab';
 import GrowthIndicator from './components/common/GrowthIndicator';
 import { useProjects } from './hooks/useProjects';
 import { useCheckpoints } from './hooks/useCheckpoints';
@@ -18,6 +20,7 @@ function App() {
     const { checkpoints } = useCheckpoints();
     const [refreshing, setRefreshing] = useState(false);
     const [kaggleData, setKaggleData] = useState(null);
+    const labelStudioUrl = import.meta.env.VITE_LABEL_STUDIO_URL || 'http://localhost:8080';
 
     // Fetch Kaggle data for growth calculation
     useEffect(() => {
@@ -117,45 +120,35 @@ function App() {
                 return <KaggleDataEditor />;
             case 'metrics':
                 return <DataMetricsView />;
+            case 'settings':
+                return (
+                    <SettingsTab
+                        labelStudioUrl={labelStudioUrl}
+                        onRefreshAll={handleRefreshAll}
+                        refreshing={refreshing}
+                    />
+                );
+            case 'notifications':
+                return <NotificationsTab />;
             default:
                 return null;
         }
     };
 
     return (
-        <MainLayout onRefreshAll={handleRefreshAll} refreshing={refreshing}>
+        <MainLayout activeTab={activeTab} onTabChange={setActiveTab}>
             {!selectedProject && (
                 <>
-                    {/* Growth Indicator - Always visible across all tabs */}
-                    <GrowthIndicator
-                        current={currentTotal}
-                        checkpoint={checkpointTotal}
-                        kaggle={kaggleTotal}
-                        growth={growth}
-                        growthPct={growthPct}
-                    />
-
-                    {/* Tab Navigation */}
-                    <div className="flex space-x-1 bg-white p-1 rounded-lg shadow-sm mb-6 border">
-                        {[
-                            { id: 'projects', label: '📁 Projects' },
-                            { id: 'classes', label: '📊 Classes' },
-                            { id: 'checkpoints', label: '📍 Checkpoints' },
-                            { id: 'kaggle', label: '📦 Kaggle Data' },
-                            { id: 'metrics', label: '📈 Data Metrics' }
-                        ].map(tab => (
-                            <button
-                                key={tab.id}
-                                onClick={() => setActiveTab(tab.id)}
-                                className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${activeTab === tab.id
-                                    ? 'bg-primary text-white shadow'
-                                    : 'text-gray-600 hover:bg-gray-100'
-                                    }`}
-                            >
-                                {tab.label}
-                            </button>
-                        ))}
-                    </div>
+                    {/* Growth Indicator - Hidden for Settings and Notifications tabs */}
+                    {!['settings', 'notifications'].includes(activeTab) && (
+                        <GrowthIndicator
+                            current={currentTotal}
+                            checkpoint={checkpointTotal}
+                            kaggle={kaggleTotal}
+                            growth={growth}
+                            growthPct={growthPct}
+                        />
+                    )}
                 </>
             )}
 
