@@ -8,6 +8,7 @@ import KaggleDataEditor from './components/kaggle/KaggleDataEditor';
 import DataMetricsView from './components/metrics/DataMetricsView';
 import SettingsTab from './components/settings/SettingsTab';
 import NotificationsTab from './components/notifications/NotificationsTab';
+import ChatBot from './components/chat/ChatBot';
 import GrowthIndicator from './components/common/GrowthIndicator';
 import { useProjects } from './hooks/useProjects';
 import { useCheckpoints } from './hooks/useCheckpoints';
@@ -136,24 +137,28 @@ function App() {
     };
 
     return (
-        <MainLayout activeTab={activeTab} onTabChange={setActiveTab}>
-            {!selectedProject && (
-                <>
-                    {/* Growth Indicator - Hidden for Settings and Notifications tabs */}
-                    {!['settings', 'notifications'].includes(activeTab) && (
-                        <GrowthIndicator
-                            current={currentTotal}
-                            checkpoint={checkpointTotal}
-                            kaggle={kaggleTotal}
-                            growth={growth}
-                            growthPct={growthPct}
-                        />
-                    )}
-                </>
-            )}
+        <>
+            <MainLayout activeTab={activeTab} onTabChange={setActiveTab}>
+                {!selectedProject && (
+                    <>
+                        {/* Growth Indicator - Hidden for Settings and Notifications tabs */}
+                        {!['settings', 'notifications'].includes(activeTab) && (
+                            <GrowthIndicator
+                                current={currentTotal}
+                                checkpoint={checkpointTotal}
+                                kaggle={kaggleTotal}
+                                growth={growth}
+                                growthPct={growthPct}
+                            />
+                        )}
+                    </>
+                )}
 
-            {renderContent()}
-        </MainLayout>
+                {renderContent()}
+            </MainLayout>
+
+            <ChatBot />
+        </>
     );
 }
 

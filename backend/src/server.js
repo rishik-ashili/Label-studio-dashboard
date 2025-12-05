@@ -12,6 +12,7 @@ import schedulerRoutes from './routes/scheduler.js';
 import categoriesRoutes from './routes/categories.js';
 import metricsRoutes from './routes/metrics.js';
 import logRoutes, { logToRecent } from './routes/logRoutes.js';
+import chatRoutes from './routes/chatRoutes.js';
 
 // Import services (to initialize)
 import storage from './storage/fileStorage.js';
@@ -39,6 +40,7 @@ app.use('/api/scheduler', schedulerRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/metrics', metricsRoutes);
 app.use('/api/logs', logRoutes); // Add logs API
+app.use('/api/chat', chatRoutes); // Add chat API
 
 // Kaggle data endpoints
 app.get('/api/kaggle', async (req, res) => {
