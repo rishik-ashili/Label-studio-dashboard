@@ -6,29 +6,29 @@
     "auditLog": "D:\\Dobbe ai\\label studio dashboard\\react-dashboard\\backend\\logs\\.aea27af8f8ee8e53bf81044b5bd499926d4cd70f-audit.json",
     "files": [
         {
-            "date": 1764606136511,
-            "name": "D:\\Dobbe ai\\label studio dashboard\\react-dashboard\\backend\\logs\\application-2025-12-01.log",
-            "hash": "08683faf523e12375594c19539814d8f9faed10ba818e9c7f30d1617bd9c8945"
-        },
-        {
-            "date": 1764613820495,
-            "name": "D:\\Dobbe ai\\label studio dashboard\\react-dashboard\\backend\\logs\\application-2025-12-02.log",
-            "hash": "8331442ec4c1e4e0e36611f7f2fb3f75f602f739f29a7b0d4d96fffa6a9b8abb"
-        },
-        {
-            "date": 1764740851545,
-            "name": "D:\\Dobbe ai\\label studio dashboard\\react-dashboard\\backend\\logs\\application-2025-12-03.log",
-            "hash": "e0912a97a39ad7c05fb84b67af6b02475db1fa1fe51ca8659713e3ccfe91953c"
-        },
-        {
-            "date": 1764837708682,
-            "name": "D:\\Dobbe ai\\label studio dashboard\\react-dashboard\\backend\\logs\\application-2025-12-04.log",
-            "hash": "41d62eb929d57eb4bdb4ba10b038fcb566d5267f69e92bb27e9b973d90868725"
-        },
-        {
             "date": 1764957136890,
             "name": "D:\\Dobbe ai\\label studio dashboard\\react-dashboard\\backend\\logs\\application-2025-12-05.log",
             "hash": "b52796070f718cb7efd31db8f4e6caee2f877b47e4db73cf7c44f571ff5815c1"
+        },
+        {
+            "date": 1764959420672,
+            "name": "D:\\Dobbe ai\\label studio dashboard\\react-dashboard\\backend\\logs\\application-2025-12-06.log",
+            "hash": "1d32793c16c9de737c89aa79a721333fd2545176cba06e05f50967c1a55cf55b"
+        },
+        {
+            "date": 1765179335567,
+            "name": "D:\\Dobbe ai\\label studio dashboard\\react-dashboard\\backend\\logs\\application-2025-12-08.log",
+            "hash": "c3dd847229202659a5ee31732c4049c778e372011f787aa4f1be8f6c537aac9c"
+        },
+        {
+            "date": 1765474017298,
+            "name": "D:\\Dobbe ai\\label studio dashboard\\react-dashboard\\backend\\logs\\application-2025-12-11.log",
+            "hash": "fda19542cde4b79b50f592c7def020509f048182316262ea95b9292c87f69e40"
+        },
+        {
+            "date": 1765477854960,
+            "name": "D:\\Dobbe ai\\label studio dashboard\\react-dashboard\\backend\\logs\\application-2025-12-12.log",
+            "hash": "a115dc7ec417fedc5729be4daeacd9332b28a6499203893ac876fb46a88ba590"
         }
     ],
     "hashType": "sha256"

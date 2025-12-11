@@ -53,7 +53,8 @@ export const projectsAPI = {
     getAll: () => api.get('/projects'),
     getOne: (id) => api.get(`/projects/${id}`),
     refresh: (id, projectTitle) => api.post(`/projects/${id}/refresh`, { project_title: projectTitle }),
-    refreshAll: () => api.post('/projects/refresh-all')
+    refreshAll: () => api.post('/projects/refresh-all'),
+    getRefreshProgress: () => api.get('/projects/refresh-progress')
 };
 
 // Checkpoints
@@ -98,6 +99,17 @@ export const categoriesAPI = {
 // Metrics
 export const metricsAPI = {
     getCombined: () => api.get('/metrics/combined')
+};
+
+// Modalities
+export const modalitiesAPI = {
+    getAll: () => api.get('/modalities'),
+    update: (projectId, modality) => api.put(`/modalities/${projectId}`, { modality })
+};
+
+// Growth
+export const growthAPI = {
+    getMetrics: (threshold = 20) => api.get('/growth', { params: { threshold } })
 };
 
 export default api;

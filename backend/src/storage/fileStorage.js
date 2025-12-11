@@ -171,6 +171,15 @@ class FileStorage {
         return await this.writeJSON('scheduler_config.json', config);
     }
 
+    // Project modalities
+    async loadProjectModalities() {
+        return await this.readJSON('project_modalities.json', {});
+    }
+
+    async saveProjectModalities(modalities) {
+        return await this.writeJSON('project_modalities.json', modalities);
+    }
+
     // Scheduler logs
     async appendSchedulerLog(message) {
         const timestamp = new Date().toISOString();

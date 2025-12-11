@@ -8,6 +8,7 @@ import KaggleDataEditor from './components/kaggle/KaggleDataEditor';
 import DataMetricsView from './components/metrics/DataMetricsView';
 import SettingsTab from './components/settings/SettingsTab';
 import NotificationsTab from './components/notifications/NotificationsTab';
+import GrowthTab from './components/growth/GrowthTab';
 import ChatBot from './components/chat/ChatBot';
 import GrowthIndicator from './components/common/GrowthIndicator';
 import { useProjects } from './hooks/useProjects';
@@ -15,7 +16,7 @@ import { useCheckpoints } from './hooks/useCheckpoints';
 import { kaggleAPI } from './services/api';
 
 function App() {
-    const [activeTab, setActiveTab] = useState('projects');
+    const [activeTab, setActiveTab] = useState('growth');
     const [selectedProject, setSelectedProject] = useState(null);
     const { projects, loading, refreshProject, refreshAllProjects } = useProjects();
     const { checkpoints } = useCheckpoints();
@@ -104,6 +105,8 @@ function App() {
         }
 
         switch (activeTab) {
+            case 'growth':
+                return <GrowthTab />;
             case 'projects':
                 return (
                     <ProjectGrid
@@ -111,6 +114,7 @@ function App() {
                         loading={loading}
                         onRefresh={refreshProject}
                         onViewDetails={setSelectedProject}
+                        onModalityChange={refreshAllProjects}
                     />
                 );
             case 'classes':

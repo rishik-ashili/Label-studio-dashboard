@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { chatAPI } from '../../services/chatAPI';
 
 const ChatBot = () => {
@@ -185,7 +187,33 @@ const ChatBot = () => {
                                                     : 'bg-white text-gray-900 border border-gray-200'
                                             }`}
                                     >
-                                        <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                                        {message.role === 'user' ? (
+                                            <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                                        ) : (
+                                            <div className="text-sm prose prose-sm max-w-none">
+                                                <ReactMarkdown
+                                                    remarkPlugins={[remarkGfm]}
+                                                    components={{
+                                                        a: ({ node, ...props }) => <a {...props} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer" />,
+                                                        code: ({ node, inline, ...props }) =>
+                                                            inline
+                                                                ? <code {...props} className="bg-gray-100 px-1 py-0.5 rounded text-xs" />
+                                                                : <code {...props} className="block bg-gray-100 p-2 rounded text-xs overflow-x-auto" />,
+                                                        table: ({ node, ...props }) => <table {...props} className="border-collapse border border-gray-300 w-full my-2" />,
+                                                        th: ({ node, ...props }) => <th {...props} className="border border-gray-300 px-2 py-1 bg-gray-100 text-left" />,
+                                                        td: ({ node, ...props }) => <td {...props} className="border border-gray-300 px-2 py-1" />,
+                                                        ul: ({ node, ...props }) => <ul {...props} className="list-disc list-inside my-2" />,
+                                                        ol: ({ node, ...props }) => <ol {...props} className="list-decimal list-inside my-2" />,
+                                                        h1: ({ node, ...props }) => <h1 {...props} className="text-lg font-bold mt-2 mb-1" />,
+                                                        h2: ({ node, ...props }) => <h2 {...props} className="text-base font-bold mt-2 mb-1" />,
+                                                        h3: ({ node, ...props }) => <h3 {...props} className="text-sm font-bold mt-1 mb-1" />,
+                                                        p: ({ node, ...props }) => <p {...props} className="my-1" />
+                                                    }}
+                                                >
+                                                    {message.content}
+                                                </ReactMarkdown>
+                                            </div>
+                                        )}
                                         {message.functionCalls && message.functionCalls.length > 0 && (
                                             <div className="mt-2 pt-2 border-t border-gray-200 text-xs text-gray-500">
                                                 <details>

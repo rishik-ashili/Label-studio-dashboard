@@ -2,9 +2,20 @@ import React, { useState } from 'react';
 import MetricCard from '../common/MetricCard';
 import LoadingSpinner from '../common/LoadingSpinner';
 import { formatTimeAgo } from '../../utils/formatters';
+import { modalitiesAPI } from '../../services/api';
 
-const ProjectCard = ({ project, onRefresh, onViewDetails }) => {
+const MODALITIES = ['OPG', 'Bitewing', 'IOPA', 'Others'];
+
+const MODALITY_COLORS = {
+    'OPG': 'bg-blue-100 text-blue-800 border-blue-300',
+    'Bitewing': 'bg-green-100 text-green-800 border-green-300',
+    'IOPA': 'bg-purple-100 text-purple-800 border-purple-300',
+    'Others': 'bg-gray-100 text-gray-800 border-gray-300'
+};
+
+const ProjectCard = ({ project, onRefresh, onViewDetails, onModalityChange }) => {
     const [refreshing, setRefreshing] = useState(false);
+    const [updatingModality, setUpdatingModality] = useState(false);
 
     const handleRefresh = async () => {
         setRefreshing(true);
@@ -12,13 +23,47 @@ const ProjectCard = ({ project, onRefresh, onViewDetails }) => {
         setRefreshing(false);
     };
 
+    const handleModalityChange = async (e) => {
+        const newModality = e.target.value;
+        setUpdatingModality(true);
+
+        try {
+            await modalitiesAPI.update(project.id, newModality);
+            // Notify parent to refresh projects
+            if (onModalityChange) {
+                onModalityChange();
+            }
+        } catch (error) {
+            console.error('Failed to update modality:', error);
+        } finally {
+            setUpdatingModality(false);
+        }
+    };
+
     const latestMetrics = project.latest_metrics?.metrics;
     const summary = latestMetrics?._summary || {};
     const timestamp = project.latest_metrics?.timestamp;
+    const modality = project.modality || 'Others';
 
     return (
-        <div className="project-tile">
+        <div className="project-tile relative">
             <h3 className="text-lg font-bold mb-2">📁 {project.title}</h3>
+
+            {/* Modality Selector */}
+            <div className="mb-3">
+                <label className="block text-xs text-gray-600 mb-1">Modality</label>
+                <select
+                    value={modality}
+                    onChange={handleModalityChange}
+                    disabled={updatingModality}
+                    className={`w-full px-3 py-1.5 text-sm font-medium border rounded-md transition-colors ${MODALITY_COLORS[modality]} ${updatingModality ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:opacity-80'
+                        }`}
+                >
+                    {MODALITIES.map(m => (
+                        <option key={m} value={m}>{m}</option>
+                    ))}
+                </select>
+            </div>
 
             {timestamp && (
                 <p className="text-sm text-gray-500 italic mb-3">

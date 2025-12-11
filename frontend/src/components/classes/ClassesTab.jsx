@@ -4,7 +4,6 @@ import LoadingSpinner from '../common/LoadingSpinner';
 import { useProjects } from '../../hooks/useProjects';
 import { useCheckpoints } from '../../hooks/useCheckpoints';
 import { CLASS_CATEGORIES } from '../../utils/constants';
-import { detectXrayType } from '../../utils/xrayDetector';
 
 // Helper to aggregate metrics
 const aggregateMetrics = (projects) => {
@@ -15,14 +14,15 @@ const aggregateMetrics = (projects) => {
         aggregated[cat] = {
             OPG: {},
             Bitewing: {},
-            IOPA: {}
+            IOPA: {},
+            Others: {}
         };
     });
 
     projects.forEach(project => {
         const metrics = project.latest_metrics?.metrics || {};
-        // Use shared utility for detection
-        const xrayType = detectXrayType(project.title);
+        // Use stored modality from project
+        const xrayType = project.modality || 'Others';
 
         Object.keys(metrics).forEach(className => {
             if (className === '_summary') return;
@@ -37,6 +37,9 @@ const aggregateMetrics = (projects) => {
             }
 
             // Initialize if needed
+            if (!aggregated[category][xrayType]) {
+                aggregated[category][xrayType] = {};
+            }
             if (!aggregated[category][xrayType][className]) {
                 aggregated[category][xrayType][className] = { image_count: 0, annotation_count: 0 };
             }

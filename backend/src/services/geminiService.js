@@ -43,6 +43,83 @@ const functionDeclarations = [
             },
             required: []
         }
+    },
+    {
+        name: 'getKaggleVsLabelStudio',
+        description: 'Compare Kaggle pre-training dataset vs Label Studio annotations',
+        parameters: { type: 'object', properties: {}, required: [] }
+    },
+    {
+        name: 'getWeeklyGrowthByProject',
+        description: 'Get projects ranked by annotation growth over the last N weeks',
+        parameters: {
+            type: 'object',
+            properties: {
+                weeks: { type: 'number', description: 'Number of weeks to look back (default: 1)' }
+            },
+            required: []
+        }
+    },
+    {
+        name: 'getRecentActivityProjects',
+        description: 'Get projects with recent annotation activity in the last N days',
+        parameters: {
+            type: 'object',
+            properties: {
+                days: { type: 'number', description: 'Number of days to look back (default: 7)' }
+            },
+            required: []
+        }
+    },
+    {
+        name: 'getAnnotationVelocity',
+        description: 'Get annotation rate per day and projected weekly/monthly growth',
+        parameters: {
+            type: 'object',
+            properties: {
+                days: { type: 'number', description: 'Number of days to calculate from (default: 7)' }
+            },
+            required: []
+        }
+    },
+    {
+        name: 'getProjectsNeedingAttention',
+        description: 'Get projects below a progress threshold that need attention',
+        parameters: {
+            type: 'object',
+            properties: {
+                threshold: { type: 'number', description: 'Progress threshold percentage (default: 50)' }
+            },
+            required: []
+        }
+    },
+    {
+        name: 'searchProjectsByProgress',
+        description: 'Find projects within a specific progress range',
+        parameters: {
+            type: 'object',
+            properties: {
+                minProgress: { type: 'number', description: 'Minimum progress percentage' },
+                maxProgress: { type: 'number', description: 'Maximum progress percentage' }
+            },
+            required: ['minProgress', 'maxProgress']
+        }
+    },
+    {
+        name: 'getProjectsByClass',
+        description: 'Find all projects containing a specific class/category - Use this for queries about specific conditions like "cavity", "caries", "pulp", etc.',
+        parameters: {
+            type: 'object',
+            properties: {
+                className: { type: 'string', description: 'The class name to search for (e.g., "cavity", "caries", "pulp", "bone", "filling")' }
+            },
+            required: ['className']
+        }
+    },
+    {
+        name: 'getClassDistributionSummary',
+        description: 'Get summary of all classes across all projects with counts',
+        parameters: { type: 'object', properties: {}, required: [] }
     }
 ];
 
@@ -52,7 +129,15 @@ const functionMap = {
     getProjectDetails: chatFunctions.getProjectDetails,
     getOverallSummary: chatFunctions.getOverallSummary,
     getTodayAnnotations: chatFunctions.getTodayAnnotations,
-    getTopPerformingProjects: chatFunctions.getTopPerformingProjects
+    getTopPerformingProjects: chatFunctions.getTopPerformingProjects,
+    getKaggleVsLabelStudio: chatFunctions.getKaggleVsLabelStudio,
+    getWeeklyGrowthByProject: chatFunctions.getWeeklyGrowthByProject,
+    getRecentActivityProjects: chatFunctions.getRecentActivityProjects,
+    getAnnotationVelocity: chatFunctions.getAnnotationVelocity,
+    getProjectsNeedingAttention: chatFunctions.getProjectsNeedingAttention,
+    searchProjectsByProgress: chatFunctions.searchProjectsByProgress,
+    getProjectsByClass: chatFunctions.getProjectsByClass,
+    getClassDistributionSummary: chatFunctions.getClassDistributionSummary
 };
 
 /**
@@ -64,8 +149,19 @@ export async function processMessage(userMessage, conversationHistory = []) {
     }
 
     const model = genAI.getGenerativeModel({
-        model: 'gemini-flash-lite-latest',
-        tools: [{ functionDeclarations }]
+        model: 'gemini-2.5-flash',  // 1500 requests/day vs gemini-2.5-flash's 20 requests/day
+        tools: [{ functionDeclarations }],
+        systemInstruction: `You are a helpful AI assistant for analyzing Label Studio annotation data.
+
+When answering questions:
+- For class/category queries (cavity, caries, pulp, bone, etc.), use getProjectsByClass
+- For "top performing" or "best" queries, use getTopPerformingProjects  
+- For recent activity queries, use getWeeklyGrowthByProject or getRecentActivityProjects
+- Always include project names/titles, not just IDs
+- Use simple bullet points, avoid complex markdown tables
+- Format numbers clearly (e.g., "1,234 images")
+
+Available classes: cavity, caries, pulp, bone, filling, lesion, rootcanal`
     });
 
     // Build conversation history for Gemini

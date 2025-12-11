@@ -2,7 +2,7 @@ import React from 'react';
 import ProjectCard from './ProjectCard';
 import LoadingSpinner from '../common/LoadingSpinner';
 
-const ProjectGrid = ({ projects, loading, onRefresh, onViewDetails }) => {
+const ProjectGrid = ({ projects, loading, onRefresh, onViewDetails, onModalityChange }) => {
     if (loading) {
         return <LoadingSpinner message="Loading projects..." />;
     }
@@ -31,6 +31,7 @@ const ProjectGrid = ({ projects, loading, onRefresh, onViewDetails }) => {
                         project={project}
                         onRefresh={onRefresh}
                         onViewDetails={onViewDetails}
+                        onModalityChange={onModalityChange}
                     />
                 ))}
             </div>

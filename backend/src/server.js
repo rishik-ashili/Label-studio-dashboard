@@ -8,11 +8,13 @@ import { fileURLToPath } from 'url';
 import projectsRoutes from './routes/projects.js';
 import checkpointsRoutes from './routes/checkpoints.js';
 import notificationsRoutes from './routes/notifications.js';
+import growthRoutes from './routes/growth.js';
 import schedulerRoutes from './routes/scheduler.js';
 import categoriesRoutes from './routes/categories.js';
 import metricsRoutes from './routes/metrics.js';
 import logRoutes, { logToRecent } from './routes/logRoutes.js';
 import chatRoutes from './routes/chatRoutes.js';
+import modalitiesRoutes from './routes/modalities.js';
 
 // Import services (to initialize)
 import storage from './storage/fileStorage.js';
@@ -35,12 +37,14 @@ app.use(requestLogger); // Add request logging
 // API Routes
 app.use('/api/projects', projectsRoutes);
 app.use('/api/checkpoints', checkpointsRoutes);
-app.use('/api/notifications', notificationsRoutes);
+app.use('/api/notifications', notificationsRoutes); // Keep for backward compatibility
+app.use('/api/growth', growthRoutes); // New growth endpoint
 app.use('/api/scheduler', schedulerRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/metrics', metricsRoutes);
 app.use('/api/logs', logRoutes); // Add logs API
 app.use('/api/chat', chatRoutes); // Add chat API
+app.use('/api/modalities', modalitiesRoutes); // Add modalities API
 
 // Kaggle data endpoints
 app.get('/api/kaggle', async (req, res) => {
