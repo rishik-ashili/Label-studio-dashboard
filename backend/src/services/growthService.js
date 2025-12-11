@@ -1,18 +1,22 @@
 import storage from '../storage/fileStorage.js';
 import { getAllModalities } from './modalityService.js';
 import { CLASS_CATEGORIES } from '../utils/constants.js';
+import labelStudioService from './labelStudio.js';
+import { extractClassMetrics } from './metricsExtractor.js';
 
 /**
  * Growth Service
- * Calculates modality-class wise growth metrics
+ * Calculates modality-class wise growth metrics using LIVE data from Label Studio
  */
 
 /**
  * Calculate growth for all modality-class combinations
  * Returns metrics that exceed the given threshold
+ * Uses LIVE data from Label Studio API vs checkpoint snapshots
  */
 export const calculateModalityClassGrowth = async (threshold = 20) => {
-    const persistentDB = await storage.loadPersistentDB();
+    // Get LIVE projects from Label Studio
+    const projects = await labelStudioService.getAllProjects();
     const checkpoints = await storage.loadCheckpoints();
     const modalities = await getAllModalities();
 
@@ -21,61 +25,65 @@ export const calculateModalityClassGrowth = async (threshold = 20) => {
     // Group by modality-class combination
     const modalityClassData = {};
 
-    // Process each project
-    for (const [projectId, projectData] of Object.entries(persistentDB)) {
-        const history = projectData.history || [];
-        if (history.length === 0) continue;
+    // Process each project with LIVE data
+    for (const project of projects) {
+        try {
+            // Fetch LIVE tasks from Label Studio
+            const tasks = await labelStudioService.getProjectTasks(project.id);
+            const latestMetrics = extractClassMetrics(tasks);
+            const modality = modalities[String(project.id)] || 'Others';
 
-        const latestMetrics = history[history.length - 1].metrics;
-        const modality = modalities[projectId] || 'Others';
+            // Get checkpoint for this project (may not exist)
+            const checkpointData = checkpoints.projects?.[project.id];
+            const checkpointMetrics = checkpointData?.metrics || {}; // Empty if no checkpoint
 
-        // Get checkpoint for this project (may not exist)
-        const checkpointData = checkpoints.projects?.[projectId];
-        const checkpointMetrics = checkpointData?.metrics || {}; // Empty if no checkpoint
+            // Process each class in both current and checkpoint
+            const allClasses = new Set([
+                ...Object.keys(latestMetrics),
+                ...Object.keys(checkpointMetrics)
+            ]);
 
-        // Process each class in both current and checkpoint
-        const allClasses = new Set([
-            ...Object.keys(latestMetrics),
-            ...Object.keys(checkpointMetrics)
-        ]);
+            for (const className of allClasses) {
+                if (className === '_summary') continue;
 
-        for (const className of allClasses) {
-            if (className === '_summary') continue;
+                const currentCount = latestMetrics[className]?.image_count || 0;
+                const checkpointCount = checkpointMetrics[className]?.image_count || 0;
 
-            const currentCount = latestMetrics[className]?.image_count || 0;
-            const checkpointCount = checkpointMetrics[className]?.image_count || 0;
+                // Create modality-class key
+                const key = `${className}-${modality}`;
 
-            // Create modality-class key
-            const key = `${className}-${modality}`;
+                if (!modalityClassData[key]) {
+                    modalityClassData[key] = {
+                        className,
+                        modality,
+                        currentCount: 0,
+                        checkpointCount: 0,
+                        contributingProjects: []
+                    };
+                }
 
-            if (!modalityClassData[key]) {
-                modalityClassData[key] = {
-                    className,
-                    modality,
-                    currentCount: 0,
-                    checkpointCount: 0,
-                    contributingProjects: []
-                };
+                modalityClassData[key].currentCount += currentCount;
+                modalityClassData[key].checkpointCount += checkpointCount;
+
+                // Track project contribution if there's current or checkpoint data
+                if (currentCount > 0 || checkpointCount > 0) {
+                    const projectGrowthPct = checkpointCount > 0
+                        ? ((currentCount - checkpointCount) / checkpointCount) * 100
+                        : (currentCount > 0 ? 100 : 0);
+
+                    modalityClassData[key].contributingProjects.push({
+                        projectId: parseInt(project.id),
+                        projectTitle: project.title,
+                        currentCount,
+                        checkpointCount,
+                        growthPct: Math.round(projectGrowthPct * 10) / 10,
+                        growthCount: currentCount - checkpointCount
+                    });
+                }
             }
-
-            modalityClassData[key].currentCount += currentCount;
-            modalityClassData[key].checkpointCount += checkpointCount;
-
-            // Track project contribution if there's current or checkpoint data
-            if (currentCount > 0 || checkpointCount > 0) {
-                const projectGrowthPct = checkpointCount > 0
-                    ? ((currentCount - checkpointCount) / checkpointCount) * 100
-                    : (currentCount > 0 ? 100 : 0);
-
-                modalityClassData[key].contributingProjects.push({
-                    projectId: parseInt(projectId),
-                    projectTitle: `Project ${projectId}`, // Will be enriched by frontend
-                    currentCount,
-                    checkpointCount,
-                    growthPct: Math.round(projectGrowthPct * 10) / 10,
-                    growthCount: currentCount - checkpointCount
-                });
-            }
+        } catch (error) {
+            console.error(`Error processing project ${project.id} for growth calculation:`, error.message);
+            // Continue with other projects
         }
     }
 

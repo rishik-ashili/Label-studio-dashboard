@@ -1,33 +1,17 @@
 import { calculateModalityClassGrowth } from '../services/growthService.js';
-import labelStudioService from '../services/labelStudio.js';
 
 /**
  * Growth Controller
  * Handles growth tracking API endpoints
  */
 
-// GET /api/growth - Get modality-class growth metrics
+// GET /api/growth - Get modality-class growth metrics with LIVE data
 export const getGrowthMetrics = async (req, res) => {
     try {
         const threshold = parseFloat(req.query.threshold) || 20;
 
-        // Calculate growth metrics
+        // Calculate growth metrics using LIVE data from Label Studio
         const metrics = await calculateModalityClassGrowth(threshold);
-
-        // Enrich with project titles
-        const projects = await labelStudioService.getAllProjects();
-        const projectTitlesMap = {};
-        projects.forEach(p => {
-            projectTitlesMap[p.id] = p.title;
-        });
-
-        // Add project titles to contributing projects
-        metrics.forEach(metric => {
-            metric.contributingProjects = metric.contributingProjects.map(cp => ({
-                ...cp,
-                projectTitle: projectTitlesMap[cp.projectId] || `Project ${cp.projectId}`
-            }));
-        });
 
         res.json({
             threshold,
