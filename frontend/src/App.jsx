@@ -39,8 +39,18 @@ function App() {
 
     const handleRefreshAll = async () => {
         setRefreshing(true);
-        await refreshAllProjects();
-        setRefreshing(false);
+        try {
+            await refreshAllProjects();
+            // Don't set refreshing(false) here - let SettingsTab handle it based on progress
+        } catch (error) {
+            console.error('Error starting refresh:', error);
+            setRefreshing(false);
+        }
+    };
+
+    // Export setRefreshing so SettingsTab can control it
+    const handleRefreshingChange = (value) => {
+        setRefreshing(value);
     };
 
     // Calculate growth metrics
@@ -131,6 +141,7 @@ function App() {
                         labelStudioUrl={labelStudioUrl}
                         onRefreshAll={handleRefreshAll}
                         refreshing={refreshing}
+                        onRefreshingChange={handleRefreshingChange}
                     />
                 );
             case 'notifications':

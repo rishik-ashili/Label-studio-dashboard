@@ -9,6 +9,8 @@ import projectsRoutes from './routes/projects.js';
 import checkpointsRoutes from './routes/checkpoints.js';
 import notificationsRoutes from './routes/notifications.js';
 import growthRoutes from './routes/growth.js';
+import timeSeriesRoutes from './routes/timeSeries.js';
+import timeSeriesBackfillRoutes from './routes/timeSeriesBackfill.js';
 import schedulerRoutes from './routes/scheduler.js';
 import categoriesRoutes from './routes/categories.js';
 import metricsRoutes from './routes/metrics.js';
@@ -39,6 +41,8 @@ app.use('/api/projects', projectsRoutes);
 app.use('/api/checkpoints', checkpointsRoutes);
 app.use('/api/notifications', notificationsRoutes); // Keep for backward compatibility
 app.use('/api/growth', growthRoutes); // New growth endpoint
+app.use('/api/time-series', timeSeriesRoutes); // Time series endpoint
+app.use('/api/time-series', timeSeriesBackfillRoutes); // Backfill endpoint
 app.use('/api/scheduler', schedulerRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/metrics', metricsRoutes);

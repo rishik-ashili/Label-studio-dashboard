@@ -3,7 +3,7 @@ import SchedulerSettings from '../scheduler/SchedulerSettings';
 import ApplicationLogs from './ApplicationLogs';
 import { projectsAPI } from '../../services/api';
 
-const SettingsTab = ({ labelStudioUrl, onRefreshAll, refreshing }) => {
+const SettingsTab = ({ labelStudioUrl, onRefreshAll, refreshing, onRefreshingChange }) => {
     const [progress, setProgress] = useState(null);
     const pollingInterval = useRef(null);
 
@@ -30,9 +30,19 @@ const SettingsTab = ({ labelStudioUrl, onRefreshAll, refreshing }) => {
         };
     }, [refreshing]);
 
+    // Check if refresh is complete based on progress
+    useEffect(() => {
+        if (progress && !progress.inProgress && progress.total > 0 && refreshing) {
+            // Refresh is complete
+            console.log('✅ Refresh complete based on progress');
+            onRefreshingChange(false);
+        }
+    }, [progress, refreshing, onRefreshingChange]);
+
     const fetchProgress = async () => {
         try {
             const response = await projectsAPI.getRefreshProgress();
+            console.log('📊 Progress update:', response.data);
             setProgress(response.data);
         } catch (error) {
             console.error('Failed to fetch progress:', error);
@@ -40,9 +50,13 @@ const SettingsTab = ({ labelStudioUrl, onRefreshAll, refreshing }) => {
     };
 
     const getProgressPercentage = () => {
-        if (!progress || progress.total === 0) return 0;
-        return Math.round((progress.current / progress.total) * 100);
+        if (!progress || !progress.total || progress.total === 0) return 0;
+        const percentage = Math.round((progress.current / progress.total) * 100);
+        return isNaN(percentage) ? 0 : percentage;
     };
+
+    // Check if progress data is valid and ready to display
+    const hasValidProgress = progress && progress.total > 0;
 
     return (
         <div className="max-w-4xl">
@@ -75,14 +89,14 @@ const SettingsTab = ({ labelStudioUrl, onRefreshAll, refreshing }) => {
                     </p>
 
                     {/* Progress Bar */}
-                    {refreshing && progress && (
+                    {refreshing && hasValidProgress && (
                         <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                             <div className="flex items-center justify-between mb-2">
                                 <div className="flex-1">
                                     <p className="text-sm font-medium text-blue-900">
                                         {progress.inProgress
-                                            ? `Refreshing project ${progress.current}/${progress.total}`
-                                            : `Processing ${progress.completed}/${progress.total} projects...`
+                                            ? `Refreshing project ${progress.current || 0}/${progress.total || 0}`
+                                            : `Processing ${progress.completed || 0}/${progress.total || 0} projects...`
                                         }
                                     </p>
                                     {progress.currentProjectTitle && (
@@ -106,10 +120,22 @@ const SettingsTab = ({ labelStudioUrl, onRefreshAll, refreshing }) => {
 
                             {/* Stats */}
                             <div className="flex gap-4 mt-2 text-xs text-blue-700">
-                                <span>✓ Completed: {progress.completed}</span>
-                                {progress.failed > 0 && (
+                                <span>✓ Completed: {progress.completed || 0}</span>
+                                {(progress.failed || 0) > 0 && (
                                     <span className="text-red-600">✗ Failed: {progress.failed}</span>
                                 )}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Show loading indicator when refreshing but no progress yet */}
+                    {refreshing && !hasValidProgress && (
+                        <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                            <div className="flex items-center gap-3">
+                                <div className="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
+                                <p className="text-sm font-medium text-blue-900">
+                                    Initializing refresh...
+                                </p>
                             </div>
                         </div>
                     )}

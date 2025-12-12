@@ -192,6 +192,15 @@ class FileStorage {
         const allLines = content.split('\n').filter(line => line.trim());
         return allLines.slice(-lines).join('\n');
     }
+
+    // Time Series Storage
+    async loadTimeSeries() {
+        return await this.readJSON('time_series_metrics.json', {});
+    }
+
+    async saveTimeSeries(timeSeries) {
+        await this.writeJSON('time_series_metrics.json', timeSeries);
+    }
 }
 
 // Export singleton instance

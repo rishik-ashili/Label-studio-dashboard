@@ -109,7 +109,11 @@ export const modalitiesAPI = {
 
 // Growth
 export const growthAPI = {
-    getMetrics: (threshold = 20) => api.get('/growth', { params: { threshold } })
+    getMetrics: (threshold = 20) => api.get('/growth', { params: { threshold } }),
+    getTimeSeries: (range = '7d') => api.get('/time-series', { params: { range } }),
+    getTimeSeriesCustom: (startDate, endDate) => api.get('/time-series', {
+        params: { startDate, endDate }
+    })
 };
 
 export default api;

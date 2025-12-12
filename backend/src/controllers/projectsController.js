@@ -4,6 +4,7 @@ import { checkProjectTrainingReadiness, addNotification } from '../services/noti
 import { refreshAllCategories } from '../services/categoryAggregator.js';
 import storage from '../storage/fileStorage.js';
 import { initializeModalities, getProjectModality } from '../services/modalityService.js';
+import { storeSnapshot } from '../services/timeSeriesService.js';
 
 /**
  * Projects Controller
@@ -128,24 +129,41 @@ export const refreshAllProjects = async (req, res) => {
         const results = [];
         const bulkMetrics = {};
 
-        // Set initial progress
-        updateProgress(0, projects.length, 'Initializing...', 0, 0);
+        // Set initial progress with proper values
+        updateProgress(1, projects.length, 'Starting refresh...', 0, 0);
+
+        // Send response immediately so frontend can poll for progress
+        res.json({
+            success: true,
+            message: 'Refresh started',
+            total_projects: projects.length
+        });
 
         console.log(`📊 Refreshing ${projects.length} projects in batches of ${BATCH_SIZE}...`);
 
         let completedCount = 0;
         let failedCount = 0;
+        let currentProjectIndex = 0;
 
         // Process projects in batches
         for (let i = 0; i < projects.length; i += BATCH_SIZE) {
             const batch = projects.slice(i, i + BATCH_SIZE);
             console.log(`\n🔄 Processing batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(projects.length / BATCH_SIZE)} (${batch.length} projects)...`);
 
+            // Update progress at start of each batch
+            updateProgress(
+                i + 1,
+                projects.length,
+                `Processing batch ${Math.floor(i / BATCH_SIZE) + 1}...`,
+                completedCount,
+                failedCount
+            );
+
             // Process batch in parallel
             const batchPromises = batch.map(async (project, batchIndex) => {
                 const globalIndex = i + batchIndex;
 
-                // Update progress for this project
+                // Update progress for this project at start
                 updateProgress(
                     globalIndex + 1,
                     projects.length,
@@ -168,6 +186,15 @@ export const refreshAllProjects = async (req, res) => {
 
                     completedCount++;
 
+                    // Update progress after completion
+                    updateProgress(
+                        globalIndex + 1,
+                        projects.length,
+                        `Completed: ${project.title}`,
+                        completedCount,
+                        failedCount
+                    );
+
                     return {
                         project_id: project.id,
                         success: true,
@@ -176,6 +203,15 @@ export const refreshAllProjects = async (req, res) => {
                 } catch (error) {
                     console.error(`❌ Error refreshing project ${project.id}:`, error.message);
                     failedCount++;
+
+                    // Update progress after failure
+                    updateProgress(
+                        globalIndex + 1,
+                        projects.length,
+                        `Failed: ${project.title}`,
+                        completedCount,
+                        failedCount
+                    );
 
                     return {
                         project_id: project.id,
@@ -188,6 +224,15 @@ export const refreshAllProjects = async (req, res) => {
             // Wait for all projects in batch to complete
             const batchResults = await Promise.all(batchPromises);
             results.push(...batchResults);
+
+            // Update progress after batch completion
+            updateProgress(
+                Math.min(i + BATCH_SIZE, projects.length),
+                projects.length,
+                `Batch ${Math.floor(i / BATCH_SIZE) + 1} completed`,
+                completedCount,
+                failedCount
+            );
 
             console.log(`✅ Batch ${Math.floor(i / BATCH_SIZE) + 1} completed`);
         }
@@ -220,20 +265,29 @@ export const refreshAllProjects = async (req, res) => {
             console.error('========================================\n');
         }
 
+        // Store time-series snapshot for today
+        console.log('📈 Storing time-series snapshot...');
+        try {
+            const snapshot = await storeSnapshot();
+            console.log(`✅ Snapshot stored for ${snapshot.date} with ${Object.keys(snapshot.metrics).length} modality-class combinations\n`);
+        } catch (error) {
+            console.error('⚠️ Failed to store time-series snapshot:', error.message);
+        }
+
         // Reset progress - done
         resetProgress();
 
-        res.json({
-            success: true,
-            results,
-            total_projects: projects.length,
-            successful: results.filter(r => r.success).length,
-            failed: results.filter(r => !r.success).length
-        });
+        console.log('\n========================================');
+        console.log('✅ REFRESH COMPLETE');
+        console.log(`   Total: ${projects.length} projects`);
+        console.log(`   Successful: ${results.filter(r => r.success).length}`);
+        console.log(`   Failed: ${results.filter(r => !r.success).length}`);
+        console.log('========================================\n');
+
     } catch (error) {
         console.error('❌ Error in refreshAllProjects:', error);
         resetProgress();
-        res.status(500).json({ error: error.message });
+        // Don't send response here as it was already sent
     }
 };
 
