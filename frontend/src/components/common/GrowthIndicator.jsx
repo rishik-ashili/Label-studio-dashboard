@@ -14,19 +14,21 @@ const GrowthIndicator = ({ current, checkpoint, kaggle, growth, growthPct }) => 
 
     return (
         <div
-            className="p-6 rounded-lg text-white mb-6 flex flex-col md:flex-row items-center justify-between"
+            className="p-4 sm:p-6 rounded-lg text-white mb-4 sm:mb-6 flex flex-col md:flex-row items-center justify-between"
             style={{ background: 'linear-gradient(90deg, #28a745 0%, #20c997 100%)' }}
         >
             <div className="flex-1 text-center md:text-left">
-                <h2 className="text-2xl font-bold m-0">📈 Total Dataset Growth</h2>
-                <h1 className="text-5xl font-bold my-4">+{formatNumber(growth)}</h1>
-                <p className="text-xl mb-4">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold m-0">📈 Total Dataset Growth</h2>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold my-2 sm:my-4">+{formatNumber(growth)}</h1>
+                <p className="text-base sm:text-lg md:text-xl mb-2 sm:mb-4">
                     images ({growthPct >= 0 ? '+' : ''}{growthPct.toFixed(1)}% from checkpoint)
                 </p>
-                <div className="text-lg opacity-90">
-                    <strong>Current:</strong> {formatNumber(current)} | {' '}
-                    <strong>Kaggle:</strong> {formatNumber(kaggle)} | {' '}
-                    <strong>Total:</strong> {formatNumber(current + kaggle)}
+                <div className="text-sm sm:text-base md:text-lg opacity-90 flex flex-col sm:flex-row sm:gap-2">
+                    <span><strong>Current:</strong> {formatNumber(current)}</span>
+                    <span className="hidden sm:inline">|</span>
+                    <span><strong>Kaggle:</strong> {formatNumber(kaggle)}</span>
+                    <span className="hidden sm:inline">|</span>
+                    <span><strong>Total:</strong> {formatNumber(current + kaggle)}</span>
                 </div>
             </div>
 

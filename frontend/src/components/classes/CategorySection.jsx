@@ -66,10 +66,11 @@ const CategorySection = ({
         }
     };
 
-    const handleCreateCheckpoint = async (note) => {
+    const handleCreateCheckpoint = async ({ className, modality, note }) => {
         try {
-            await checkpointsAPI.createCategory(category, note);
-            alert('Checkpoint created successfully!');
+            // Use the class checkpoint API for granular checkpoints
+            await checkpointsAPI.createClass(className, modality, note);
+            alert(`Checkpoint created for ${className} (${modality})!`);
             window.location.reload(); // Refresh to show new checkpoint
         } catch (error) {
             throw error;
@@ -97,9 +98,9 @@ const CategorySection = ({
 
     return (
         <div className="mb-8">
-            <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-4 rounded-lg shadow-lg flex justify-between items-center">
-                <div className="flex items-center gap-3">
-                    <span className="text-2xl font-bold">🏷️ {category}</span>
+            <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-3 sm:p-4 rounded-lg shadow-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
+                    <span className="text-xl sm:text-2xl font-bold">🏷️ {category}</span>
                     {categoryCheckpoint && (
                         <span className="px-3 py-1 bg-white bg-opacity-20 rounded-full text-sm">
                             📍 Checkpoint Set
@@ -107,11 +108,11 @@ const CategorySection = ({
                     )}
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2 w-full sm:w-auto">
                     <button
                         onClick={handleViewHistory}
                         disabled={loadingHistory}
-                        className="px-3 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-md text-sm transition-colors flex items-center gap-2"
+                        className="px-2 sm:px-3 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-md text-xs sm:text-sm transition-colors flex items-center gap-1 sm:gap-2"
                     >
                         <span>📊</span>
                         <span>{loadingHistory ? 'Loading...' : 'View History'}</span>
@@ -121,6 +122,9 @@ const CategorySection = ({
                         onCheckpoint={handleCreateCheckpoint}
                         label="Set Checkpoint"
                         size="md"
+                        classes={classes || []}
+                        modalities={['OPG', 'Bitewing', 'IOPA']}
+                        requireSelection={true}
                     />
 
                     <button
@@ -174,7 +178,7 @@ const CategorySection = ({
                 </ChartContainer>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 mt-4">
                 {Object.keys(XRAY_TYPES).map(xrayType => (
                     <ClassMetricsTable
                         key={xrayType}

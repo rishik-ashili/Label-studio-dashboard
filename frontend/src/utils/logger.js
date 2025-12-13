@@ -74,38 +74,35 @@ class Logger {
     async sendBatch() {
         if (this.logQueue.length === 0) return;
 
-        const logsToSend = [...this.logQueue];
+        // Clear queue without sending to backend (disabled to prevent 404 errors)
         this.logQueue = [];
 
-        try {
-            await fetch(this.apiEndpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(logsToSend)
-            });
-        } catch (error) {
-            // Silent fail - don't create infinite loop
-            console.error('Failed to send logs to backend:', error);
-        }
+        // NOTE: Remote logging disabled - logs only go to browser console
+        // If you want to enable backend logging, create POST /api/logs/frontend endpoint
     }
 
     startBatchSending() {
+        // Disabled batch sending to prevent 404 errors
+        // Logs are only written to browser console
+
+        // NOTE: If you want to enable backend logging:
+        // 1. Create POST /api/logs/frontend endpoint in backend
+        // 2. Uncomment the setInterval and beforeunload code below
+
+        /*
         setInterval(() => {
             this.sendBatch();
         }, this.batchInterval);
 
-        // Send logs before page unload
         window.addEventListener('beforeunload', () => {
             if (this.logQueue.length > 0) {
-                // Use sendBeacon for reliable delivery during page unload
                 const blob = new Blob([JSON.stringify(this.logQueue)], {
                     type: 'application/json'
                 });
                 navigator.sendBeacon(this.apiEndpoint, blob);
             }
         });
+        */
     }
 }
 
