@@ -3705,4 +3705,3 @@
 2025-11-28 15:29:58,453 - INFO - Added job "Daily Data Refresh" to job store "default"
 2025-11-28 15:29:58,453 - INFO - Scheduler started
 2025-11-28 15:29:58,455 - INFO - Scheduler started: Daily refresh at 02:08
-2025-12-13T04:18:52.827Z - Scheduler started: Daily refresh at 2:08
