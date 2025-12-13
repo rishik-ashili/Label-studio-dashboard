@@ -58,6 +58,7 @@ export const projectsAPI = {
     getRefreshProgress: () => api.get('/projects/refresh-progress')
 };
 
+
 // Checkpoints
 export const checkpointsAPI = {
     getAll: () => api.get('/checkpoints'),
@@ -66,7 +67,13 @@ export const checkpointsAPI = {
     createCategory: (category, note) =>
         api.post(`/checkpoints/category/${category}`, { note }),
     createClass: (className, xrayType, note) =>
-        api.post('/checkpoints/class', { class_name: className, xray_type: xrayType, note })
+        api.post('/checkpoints/class', { class_name: className, xray_type: xrayType, note }),
+    updateProjectNote: (id, note) =>
+        api.put(`/checkpoints/project/${id}/note`, { note }),
+    updateCategoryNote: (category, note) =>
+        api.put(`/checkpoints/category/${category}/note`, { note }),
+    updateClassNote: (className, xrayType, note) =>
+        api.put('/checkpoints/class/note', { class_name: className, xray_type: xrayType, note })
 };
 
 // Notifications

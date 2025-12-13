@@ -158,3 +158,59 @@ export const getClassCheckpoint = async (storage, className, xrayType) => {
     const checkpointKey = `${className}_${xrayType}`;
     return checkpoints.classes?.[checkpointKey] || null;
 };
+
+/**
+ * Update project checkpoint note
+ */
+export const updateProjectCheckpointNote = async (storage, projectId, note) => {
+    const checkpoints = await storage.loadCheckpoints();
+    const checkpoint = checkpoints.projects[String(projectId)];
+
+    if (!checkpoint) {
+        return false;
+    }
+
+    checkpoint.note = note;
+    checkpoint.updated_at = new Date().toISOString();
+
+    await storage.saveCheckpoints(checkpoints);
+    return true;
+};
+
+/**
+ * Update category checkpoint note
+ */
+export const updateCategoryCheckpointNote = async (storage, category, note) => {
+    const checkpoints = await storage.loadCheckpoints();
+    const checkpoint = checkpoints.categories[category];
+
+    if (!checkpoint) {
+        return false;
+    }
+
+    checkpoint.note = note;
+    checkpoint.updated_at = new Date().toISOString();
+
+    await storage.saveCheckpoints(checkpoints);
+    return true;
+};
+
+/**
+ * Update class checkpoint note
+ */
+export const updateClassCheckpointNote = async (storage, className, xrayType, note) => {
+    const checkpoints = await storage.loadCheckpoints();
+    const checkpointKey = `${className}_${xrayType}`;
+    const checkpoint = checkpoints.classes?.[checkpointKey];
+
+    if (!checkpoint) {
+        return false;
+    }
+
+    checkpoint.note = note;
+    checkpoint.updated_at = new Date().toISOString();
+
+    await storage.saveCheckpoints(checkpoints);
+    return true;
+};
+
