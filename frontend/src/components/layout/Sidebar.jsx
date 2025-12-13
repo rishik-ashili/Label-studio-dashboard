@@ -62,7 +62,7 @@ const Sidebar = ({ activeTab, onTabChange }) => {
             {/* Logo Section */}
             <div className="p-5 border-b border-gray-200 flex items-center gap-3">
                 <img
-                    src="/dobbe-logo.png"
+                    src="/labelstudio-dashboard/dobbe-logo.png"
                     alt="Dobbe.ai"
                     className="h-8 w-auto"
                 />

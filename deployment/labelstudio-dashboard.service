@@ -1,0 +1,29 @@
+[Unit]
+Description=Label Studio Dashboard Backend API
+After=network.target
+
+[Service]
+Type=simple
+User=ashilirishik
+WorkingDirectory=/home/ashilirishik/Label-studio-dashboard/backend
+ExecStart=/usr/bin/node /home/ashilirishik/Label-studio-dashboard/backend/src/server.js
+
+# Environment variables
+Environment="NODE_ENV=production"
+Environment="PORT=3000"
+
+# Restart policy
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=labelstudio-dashboard
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

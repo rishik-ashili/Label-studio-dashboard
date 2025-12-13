@@ -1,0 +1,346 @@
+# Deployment Package: Label Studio Dashboard on dev.dobbe.ai/labelstudio-dashboard
+
+## Overview
+
+Created a complete deployment configuration for hosting the Label Studio Dashboard on **dev.dobbe.ai/labelstudio-dashboard** using Nginx reverse proxy and systemd service.
+
+## Architecture
+
+```
+User Request
+    ↓
+https://dev.dobbe.ai/labelstudio-dashboard/
+    ↓
+Nginx (Reverse Proxy)
+    ├── /labelstudio-dashboard/         → Static files (frontend/dist/)
+    ├── /labelstudio-dashboard/api/*    → Proxy to localhost:3000/api/*
+    └── /labelstudio-dashboard/assets/* → Static assets (cached)
+    ↓
+Backend (systemd service)
+    └── Node.js Express API on localhost:3000
+```
+
+## Configuration Summary
+
+### Port Configuration
+- **Backend:** localhost:3000 (not exposed publicly)
+- **Frontend (dev):** localhost:5173 (Vite dev server)
+- **Frontend (prod):** Static files served by Nginx
+- **Public access:** Through Nginx on dev.dobbe.ai
+
+### Base Path
+- Frontend configured with `base: '/labelstudio-dashboard/'` in Vite config
+- All assets load from `/labelstudio-dashboard/assets/*`
+- API calls use relative paths: `/labelstudio-dashboard/api/*`
+
+---
+
+## Files Created
+
+### 1. Nginx Configuration
+**File:** [labelstudio-dashboard.nginx.conf](file:///home/ashilirishik/Label-studio-dashboard/deployment/labelstudio-dashboard.nginx.conf)
+
+```nginx
+# Static file serving for /labelstudio-dashboard
+location /labelstudio-dashboard {
+    alias /home/ashilirishik/Label-studio-dashboard/frontend/dist;
+    try_files $uri $uri/ /labelstudio-dashboard/index.html;
+}
+
+# API reverse proxy for /labelstudio-dashboard/api
+location /labelstudio-dashboard/api {
+    proxy_pass http://localhost:3000/api;
+    # CORS headers + proxy settings
+}
+```
+
+**Features:**
+- ✅ Reverse proxy for API requests
+- ✅ Static file serving from build directory
+- ✅ CORS headers for cross-origin requests
+- ✅ SPA routing fallback to index.html
+- ✅ Asset caching (1 year for CSS/JS)
+- ✅ Increased timeouts for long API calls
+
+---
+
+### 2. Systemd Service
+**File:** [labelstudio-dashboard.service](file:///home/ashilirishik/Label-studio-dashboard/deployment/labelstudio-dashboard.service)
+
+```ini
+[Unit]
+Description=Label Studio Dashboard Backend API
+After=network.target
+
+[Service]
+Type=simple
+User=ashilirishik
+WorkingDirectory=/home/ashilirishik/Label-studio-dashboard/backend
+ExecStart=/usr/bin/node /home/ashilirishik/Label-studio-dashboard/backend/src/server.js
+Environment="NODE_ENV=production"
+Environment="PORT=3000"
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+**Features:**
+- ✅ Auto-start on boot
+- ✅ Auto-restart on failure (10s delay)
+- ✅ Runs as non-root user
+- ✅ Logs to systemd journal
+- ✅ Security hardening
+
+---
+
+### 3. Vite Configuration Update
+**File:** [vite.config.js](file:///home/ashilirishik/Label-studio-dashboard/frontend/vite.config.js)
+
+**Change:**
+```diff
+export default defineConfig({
+    plugins: [react()],
++   base: '/labelstudio-dashboard/',
+    server: {
+        port: 5173,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                changeOrigin: true,
+            }
+        }
+    }
+})
+```
+
+**Impact:**
+- All asset paths now start with `/labelstudio-dashboard/`
+- HTML: `/labelstudio-dashboard/index.html`
+- CSS: `/labelstudio-dashboard/assets/index-[hash].css`
+- JS: `/labelstudio-dashboard/assets/index-[hash].js`
+
+---
+
+### 4. Setup Script
+**File:** [setup.sh](file:///home/ashilirishik/Label-studio-dashboard/deployment/setup.sh) ✅ Executable
+
+**Purpose:** One-time setup automation
+
+**What it does:**
+1. Installs systemd service to `/etc/systemd/system/`
+2. Enables service for auto-start on boot
+3. Starts the backend service
+4. Builds the frontend
+5. Displays Nginx configuration instructions
+
+**Usage:**
+```bash
+./deployment/setup.sh
+```
+
+---
+
+### 5. Deployment Script
+**File:** [deploy.sh](file:///home/ashilirishik/Label-studio-dashboard/deployment/deploy.sh) ✅ Executable
+
+**Purpose:** Automated deployment for updates
+
+**What it does:**
+1. Builds frontend (`npm run build`)
+2. Restarts backend service
+3. Reloads Nginx configuration
+4. Verifies deployment
+5. Shows service status
+
+**Usage:**
+```bash
+./deployment/deploy.sh
+```
+
+---
+
+### 6. Documentation
+
+#### Full Documentation
+**File:** [README.md](file:///home/ashilirishik/Label-studio-dashboard/deployment/README.md)
+
+**Contents:**
+- Prerequisites and dependencies
+- One-time setup instructions
+- Deployment process (automated & manual)
+- Verification steps
+- Common commands
+- Troubleshooting guide
+- Security notes
+- Update procedures
+
+#### Quick Reference
+**File:** [QUICK_START.md](file:///home/ashilirishik/Label-studio-dashboard/deployment/QUICK_START.md)
+
+**Contents:**
+- Quick command reference
+- Common tasks
+- Files overview
+- Troubleshooting shortcuts
+
+---
+
+## Build Verification
+
+### Test Results
+
+```bash
+npm run build
+```
+
+**Output:**
+```
+vite v5.4.21 building for production...
+✓ 1053 modules transformed.
+dist/index.html                   0.78 kB │ gzip:   0.42 kB
+dist/assets/index-CF_l3IFj.css   30.61 kB │ gzip:   6.02 kB
+dist/assets/index-C678Ss7y.js   815.80 kB │ gzip: 243.26 kB
+✓ built in 5.75s
+```
+
+**Status:** ✅ Build successful with base path `/labelstudio-dashboard/`
+
+---
+
+## Deployment Steps
+
+### First-Time Setup
+
+```bash
+# 1. Run setup script
+cd /home/ashilirishik/Label-studio-dashboard
+./deployment/setup.sh
+
+# 2. Configure Nginx
+sudo nano /etc/nginx/sites-available/dev.dobbe.ai
+# Paste contents from deployment/labelstudio-dashboard.nginx.conf
+
+# 3. Test and reload Nginx
+sudo nginx -t
+sudo systemctl reload nginx
+
+# 4. Verify
+# Visit: https://dev.dobbe.ai/labelstudio-dashboard/
+```
+
+### Future Updates
+
+```bash
+cd /home/ashilirishik/Label-studio-dashboard
+./deployment/deploy.sh
+```
+
+---
+
+## File Structure
+
+```
+/home/ashilirishik/Label-studio-dashboard/
+├── backend/
+│   ├── src/
+│   │   └── server.js                 # Backend entry (port 3000)
+│   └── storage/cache/                # Data storage
+├── frontend/
+│   ├── dist/                         # ✨ Built files (generated)
+│   │   ├── index.html
+│   │   └── assets/
+│   ├── src/
+│   │   └── services/api.js           # Uses relative /api paths
+│   └── vite.config.js                # ✅ Updated with base path
+└── deployment/                       # 🆕 Deployment files
+    ├── labelstudio-dashboard.nginx.conf  # Nginx config
+    ├── labelstudio-dashboard.service     # Systemd service
+    ├── setup.sh                          # One-time setup
+    ├── deploy.sh                         # Deployment script
+    ├── README.md                         # Full docs
+    └── QUICK_START.md                    # Quick reference
+```
+
+---
+
+## Security Features
+
+- ✅ Backend not exposed to public (only through Nginx)
+- ✅ Service runs as non-root user
+- ✅ `NoNewPrivileges=true` in systemd
+- ✅ CORS headers properly configured
+- ✅ Proxy headers preserve original request info
+- ✅ Timeouts configured for API calls
+
+---
+
+## Next Steps for Deployment
+
+1. **Run setup script:**
+   ```bash
+   ./deployment/setup.sh
+   ```
+
+2. **Configure Nginx:**
+   - Edit: `/etc/nginx/sites-available/dev.dobbe.ai`
+   - Add contents from: `deployment/labelstudio-dashboard.nginx.conf`
+   - Test: `sudo nginx -t`
+   - Reload: `sudo systemctl reload nginx`
+
+3. **Verify deployment:**
+   - Visit: `https://dev.dobbe.ai/labelstudio-dashboard/`
+   - Check browser console for errors
+   - Test API calls in Network tab
+   - Verify service: `sudo systemctl status labelstudio-dashboard`
+
+4. **For future updates:**
+   ```bash
+   ./deployment/deploy.sh
+   ```
+
+---
+
+## Useful Commands
+
+```bash
+# View backend logs
+sudo journalctl -u labelstudio-dashboard -f
+
+# Check service status
+sudo systemctl status labelstudio-dashboard
+
+# Restart backend
+sudo systemctl restart labelstudio-dashboard
+
+# Test API directly
+curl http://localhost:3000/api/notifications
+
+# Reload Nginx
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+---
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Blank page | Check browser console, rebuild: `npm run build` |
+| API errors | Check backend: `sudo systemctl status labelstudio-dashboard` |
+| 404 on assets | Verify base path in vite.config.js, rebuild |
+| CORS errors | Check Nginx config has CORS headers |
+| Service won't start | Check logs: `sudo journalctl -u labelstudio-dashboard -n 50` |
+
+Full troubleshooting guide: [deployment/README.md](file:///home/ashilirishik/Label-studio-dashboard/deployment/README.md)
+
+---
+
+## Summary
+
+✅ **Completed:** Full deployment configuration package  
+🌐 **Access URL:** https://dev.dobbe.ai/labelstudio-dashboard/  
+📖 **Documentation:** deployment/README.md  
+🚀 **Deploy:** ./deployment/deploy.sh  
+✨ **Status:** Ready for deployment
