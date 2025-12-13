@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "/home/ashilirishik/Label-studio-dashboard/backend/logs/.76dae64530fc84e7437146af922fa35a40b69d43-audit.json",
+    "files": [
+        {
+            "date": 1765599532800,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-13.log",
+            "hash": "3599edf4cd491ebe8cd2578183e73e674f72f2cbf3f8ed796a11232aa3ede46a"
+        }
+    ],
+    "hashType": "sha256"
+}

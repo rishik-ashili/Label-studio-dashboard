@@ -1,0 +1,13 @@
+{
+  "label_studio": {
+    "base_url": "https://ovhlabel.dobbe.ai/",
+    "api_key": "ac71bb0ecab6d7a4dc5ded99dd80067f405006ee",
+    "project_id": 13
+  },
+  "retrain_threshold": 20,
+  "monitoring": {
+    "save_history": true,
+    "export_csv": true,
+    "export_json": false
+  }
+}

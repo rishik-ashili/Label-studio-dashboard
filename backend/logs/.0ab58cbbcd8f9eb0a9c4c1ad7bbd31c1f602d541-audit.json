@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/ashilirishik/Label-studio-dashboard/backend/logs/.0ab58cbbcd8f9eb0a9c4c1ad7bbd31c1f602d541-audit.json",
+    "files": [
+        {
+            "date": 1765599532802,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/error-2025-12-13.log",
+            "hash": "db597c10dd41081ae73e5b7033a6d80370ae53a70a281c9c20e9c1d3c7df7df8"
+        }
+    ],
+    "hashType": "sha256"
+}
