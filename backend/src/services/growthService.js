@@ -10,6 +10,7 @@ import { CLASS_CATEGORIES } from '../utils/constants.js';
 /**
  * Calculate growth for all modality-class combinations
  * Returns metrics that exceed the given threshold
+ * Now prioritizes class checkpoints over project checkpoints
  */
 export const calculateModalityClassGrowth = async (threshold = 20) => {
     const persistentDB = await storage.loadPersistentDB();
@@ -29,21 +30,38 @@ export const calculateModalityClassGrowth = async (threshold = 20) => {
         const latestMetrics = history[history.length - 1].metrics;
         const modality = modalities[projectId] || 'Others';
 
-        // Get checkpoint for this project (may not exist)
-        const checkpointData = checkpoints.projects?.[projectId];
-        const checkpointMetrics = checkpointData?.metrics || {}; // Empty if no checkpoint
+        // Get project checkpoint (fallback if no class checkpoint)
+        const projectCheckpoint = checkpoints.projects?.[projectId];
+        const projectCheckpointMetrics = projectCheckpoint?.metrics || {};
 
-        // Process each class in both current and checkpoint
-        const allClasses = new Set([
-            ...Object.keys(latestMetrics),
-            ...Object.keys(checkpointMetrics)
-        ]);
-
-        for (const className of allClasses) {
+        // Process each class
+        for (const [className, classData] of Object.entries(latestMetrics)) {
             if (className === '_summary') continue;
 
-            const currentCount = latestMetrics[className]?.image_count || 0;
-            const checkpointCount = checkpointMetrics[className]?.image_count || 0;
+            const currentCount = classData.image_count || 0;
+
+            // PRIORITY 1: Check for class-specific checkpoint
+            const classCheckpointKey = `${className}_${modality}`;
+            const classCheckpoint = checkpoints.classes?.[classCheckpointKey];
+
+            let checkpointCount = 0;
+            let checkpointType = 'none';
+            let checkpointDate = null;
+            let checkpointSource = null;
+
+            if (classCheckpoint) {
+                // Use class checkpoint
+                checkpointCount = classCheckpoint.metrics?.images || 0;
+                checkpointType = 'class';
+                checkpointDate = classCheckpoint.marked_at;
+                checkpointSource = `${className}-${modality}`;
+            } else if (projectCheckpointMetrics[className]) {
+                // Fall back to project checkpoint for this class
+                checkpointCount = projectCheckpointMetrics[className]?.image_count || 0;
+                checkpointType = 'project';
+                checkpointDate = projectCheckpoint.marked_at;
+                checkpointSource = `Project ${projectId}`;
+            }
 
             // Create modality-class key
             const key = `${className}-${modality}`;
@@ -54,6 +72,9 @@ export const calculateModalityClassGrowth = async (threshold = 20) => {
                     modality,
                     currentCount: 0,
                     checkpointCount: 0,
+                    checkpointType: 'none',
+                    checkpointDate: null,
+                    checkpointSource: null,
                     contributingProjects: []
                 };
             }
@@ -61,7 +82,18 @@ export const calculateModalityClassGrowth = async (threshold = 20) => {
             modalityClassData[key].currentCount += currentCount;
             modalityClassData[key].checkpointCount += checkpointCount;
 
-            // Track project contribution if there's current or checkpoint data
+            // Update checkpoint metadata (prioritize class checkpoint)
+            if (checkpointType === 'class') {
+                modalityClassData[key].checkpointType = 'class';
+                modalityClassData[key].checkpointDate = checkpointDate;
+                modalityClassData[key].checkpointSource = checkpointSource;
+            } else if (checkpointType === 'project' && modalityClassData[key].checkpointType === 'none') {
+                modalityClassData[key].checkpointType = 'project';
+                modalityClassData[key].checkpointDate = checkpointDate;
+                modalityClassData[key].checkpointSource = checkpointSource;
+            }
+
+            // Track project contribution
             if (currentCount > 0 || checkpointCount > 0) {
                 const projectGrowthPct = checkpointCount > 0
                     ? ((currentCount - checkpointCount) / checkpointCount) * 100
@@ -69,7 +101,7 @@ export const calculateModalityClassGrowth = async (threshold = 20) => {
 
                 modalityClassData[key].contributingProjects.push({
                     projectId: parseInt(projectId),
-                    projectTitle: `Project ${projectId}`, // Will be enriched by frontend
+                    projectTitle: `Project ${projectId}`,
                     currentCount,
                     checkpointCount,
                     growthPct: Math.round(projectGrowthPct * 10) / 10,
@@ -81,7 +113,8 @@ export const calculateModalityClassGrowth = async (threshold = 20) => {
 
     // Calculate growth percentages and filter by threshold
     for (const [key, data] of Object.entries(modalityClassData)) {
-        const { className, modality, currentCount, checkpointCount, contributingProjects } = data;
+        const { className, modality, currentCount, checkpointCount, contributingProjects,
+            checkpointType, checkpointDate, checkpointSource } = data;
 
         // Skip if no current data
         if (currentCount === 0) continue;
@@ -117,10 +150,13 @@ export const calculateModalityClassGrowth = async (threshold = 20) => {
                 checkpointCount,
                 growthPct: Math.round(growthPct * 10) / 10,
                 growthCount,
-                isNew: checkpointCount === 0, // Flag for NEW items
+                isNew: checkpointCount === 0,
+                checkpointType,  // 'class', 'project', or 'none'
+                checkpointDate,  // ISO date string
+                checkpointSource, // e.g., "pulp-IOPA" or "Project 5"
                 contributingProjects: contributingProjects
-                    .filter(p => p.growthCount > 0) // Only projects with positive growth
-                    .sort((a, b) => b.growthCount - a.growthCount) // Sort by growth amount
+                    .filter(p => p.growthCount > 0)
+                    .sort((a, b) => b.growthCount - a.growthCount)
             });
         }
     }
@@ -130,3 +166,4 @@ export const calculateModalityClassGrowth = async (threshold = 20) => {
 
     return growthMetrics;
 };
+

@@ -259,75 +259,81 @@ const DataMetricsView = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {Object.entries(dataByCategory).map(([category, classes]) => (
-                                <React.Fragment key={category}>
-                                    {/* Category Header */}
-                                    <tr className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
-                                        <td colSpan="13" className="px-4 py-3 font-bold text-lg">
-                                            {category}
-                                        </td>
-                                    </tr>
-
-                                    {/* Class Rows */}
-                                    {classes.map(({ className, OPG, Bitewing, IOPA }, idx) => {
-                                        const grandTotalKaggle = OPG.kaggle_images + Bitewing.kaggle_images + IOPA.kaggle_images;
-                                        const grandTotalLS = OPG.ls_images + Bitewing.ls_images + IOPA.ls_images;
-                                        const grandTotal = OPG.total_images + Bitewing.total_images + IOPA.total_images;
-
-                                        return (
-                                            <tr
-                                                key={className}
-                                                className={`border-t hover:bg-gray-50 ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
-                                                    }`}
-                                            >
-                                                <td className="px-4 py-3 font-semibold capitalize sticky left-0 bg-inherit">
-                                                    {className}
-                                                </td>
-                                                {/* OPG */}
-                                                <td className="px-3 py-3 text-center text-sm border-l">
-                                                    {OPG.kaggle_images.toLocaleString()}
-                                                </td>
-                                                <td className="px-3 py-3 text-center text-sm">
-                                                    {OPG.ls_images.toLocaleString()}
-                                                </td>
-                                                <td className="px-3 py-3 text-center text-sm font-bold bg-gray-100">
-                                                    {OPG.total_images.toLocaleString()}
-                                                </td>
-                                                {/* Bitewing */}
-                                                <td className="px-3 py-3 text-center text-sm border-l">
-                                                    {Bitewing.kaggle_images.toLocaleString()}
-                                                </td>
-                                                <td className="px-3 py-3 text-center text-sm">
-                                                    {Bitewing.ls_images.toLocaleString()}
-                                                </td>
-                                                <td className="px-3 py-3 text-center text-sm font-bold bg-gray-100">
-                                                    {Bitewing.total_images.toLocaleString()}
-                                                </td>
-                                                {/* IOPA */}
-                                                <td className="px-3 py-3 text-center text-sm border-l">
-                                                    {IOPA.kaggle_images.toLocaleString()}
-                                                </td>
-                                                <td className="px-3 py-3 text-center text-sm">
-                                                    {IOPA.ls_images.toLocaleString()}
-                                                </td>
-                                                <td className="px-3 py-3 text-center text-sm font-bold bg-gray-100">
-                                                    {IOPA.total_images.toLocaleString()}
-                                                </td>
-                                                {/* Grand Total */}
-                                                <td className="px-3 py-3 text-center text-sm border-l-2 border-yellow-500 bg-yellow-50">
-                                                    {grandTotalKaggle.toLocaleString()}
-                                                </td>
-                                                <td className="px-3 py-3 text-center text-sm bg-yellow-50">
-                                                    {grandTotalLS.toLocaleString()}
-                                                </td>
-                                                <td className="px-3 py-3 text-center text-sm font-bold bg-yellow-100">
-                                                    {grandTotal.toLocaleString()}
+                            {/* Define category order */}
+                            {['Pathology', 'Non-Pathology', 'Tooth Parts', 'Others']
+                                .filter(category => dataByCategory[category]) // Only show categories that exist
+                                .map(category => {
+                                    const classes = dataByCategory[category];
+                                    return (
+                                        <React.Fragment key={category}>
+                                            {/* Category Header */}
+                                            <tr className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+                                                <td colSpan="13" className="px-4 py-3 font-bold text-lg">
+                                                    {category}
                                                 </td>
                                             </tr>
-                                        );
-                                    })}
-                                </React.Fragment>
-                            ))}
+
+                                            {/* Class Rows */}
+                                            {classes.map(({ className, OPG, Bitewing, IOPA }, idx) => {
+                                                const grandTotalKaggle = OPG.kaggle_images + Bitewing.kaggle_images + IOPA.kaggle_images;
+                                                const grandTotalLS = OPG.ls_images + Bitewing.ls_images + IOPA.ls_images;
+                                                const grandTotal = OPG.total_images + Bitewing.total_images + IOPA.total_images;
+
+                                                return (
+                                                    <tr
+                                                        key={className}
+                                                        className={`border-t hover:bg-gray-50 ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                                                            }`}
+                                                    >
+                                                        <td className="px-4 py-3 font-semibold capitalize sticky left-0 bg-inherit">
+                                                            {className}
+                                                        </td>
+                                                        {/* OPG */}
+                                                        <td className="px-3 py-3 text-center text-sm border-l">
+                                                            {OPG.kaggle_images.toLocaleString()}
+                                                        </td>
+                                                        <td className="px-3 py-3 text-center text-sm">
+                                                            {OPG.ls_images.toLocaleString()}
+                                                        </td>
+                                                        <td className="px-3 py-3 text-center text-sm font-bold bg-gray-100">
+                                                            {OPG.total_images.toLocaleString()}
+                                                        </td>
+                                                        {/* Bitewing */}
+                                                        <td className="px-3 py-3 text-center text-sm border-l">
+                                                            {Bitewing.kaggle_images.toLocaleString()}
+                                                        </td>
+                                                        <td className="px-3 py-3 text-center text-sm">
+                                                            {Bitewing.ls_images.toLocaleString()}
+                                                        </td>
+                                                        <td className="px-3 py-3 text-center text-sm font-bold bg-gray-100">
+                                                            {Bitewing.total_images.toLocaleString()}
+                                                        </td>
+                                                        {/* IOPA */}
+                                                        <td className="px-3 py-3 text-center text-sm border-l">
+                                                            {IOPA.kaggle_images.toLocaleString()}
+                                                        </td>
+                                                        <td className="px-3 py-3 text-center text-sm">
+                                                            {IOPA.ls_images.toLocaleString()}
+                                                        </td>
+                                                        <td className="px-3 py-3 text-center text-sm font-bold bg-gray-100">
+                                                            {IOPA.total_images.toLocaleString()}
+                                                        </td>
+                                                        {/* Grand Total */}
+                                                        <td className="px-3 py-3 text-center text-sm border-l-2 border-yellow-500 bg-yellow-50">
+                                                            {grandTotalKaggle.toLocaleString()}
+                                                        </td>
+                                                        <td className="px-3 py-3 text-center text-sm bg-yellow-50">
+                                                            {grandTotalLS.toLocaleString()}
+                                                        </td>
+                                                        <td className="px-3 py-3 text-center text-sm font-bold bg-yellow-100">
+                                                            {grandTotal.toLocaleString()}
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            })}
+                                        </React.Fragment>
+                                    );
+                                })}
                         </tbody>
                     </table>
                 </div>

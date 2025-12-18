@@ -9,6 +9,16 @@
             "date": 1765599532802,
             "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/error-2025-12-13.log",
             "hash": "db597c10dd41081ae73e5b7033a6d80370ae53a70a281c9c20e9c1d3c7df7df8"
+        },
+        {
+            "date": 1765702892944,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/error-2025-12-14.log",
+            "hash": "9aa5f05dd38be3676b1af3e18cefd03fcf00143ae6b38e190e577d9430c921f9"
+        },
+        {
+            "date": 1766059320950,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/error-2025-12-18.log",
+            "hash": "e38cbdc2f8a8815cab283601d6a0632a26c54d8275723c015f12502557d86103"
         }
     ],
     "hashType": "sha256"

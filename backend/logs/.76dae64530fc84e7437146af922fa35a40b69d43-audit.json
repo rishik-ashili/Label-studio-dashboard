@@ -9,6 +9,31 @@
             "date": 1765599532800,
             "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-13.log",
             "hash": "3599edf4cd491ebe8cd2578183e73e674f72f2cbf3f8ed796a11232aa3ede46a"
+        },
+        {
+            "date": 1765670555159,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-14.log",
+            "hash": "d7081e54133e7c9f53a6f843e9493b9d4b324bbab857bcd7f2b350a59a6a08ac"
+        },
+        {
+            "date": 1765758349304,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-15.log",
+            "hash": "ab68629243a2f407086fa5b4cfc669ad45310e1869999a04a72e076b11f39dd7"
+        },
+        {
+            "date": 1765843788095,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-16.log",
+            "hash": "c37586801f42cc00457e7eb679d16349fe91ee941834e5ce8d14eef68509ff8a"
+        },
+        {
+            "date": 1765932475318,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-17.log",
+            "hash": "e88666295e9f2f2f215fddcb989a9311e979c1201e9baf29b44285a2e76491d4"
+        },
+        {
+            "date": 1766016012794,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-18.log",
+            "hash": "a45103cce19ab175efb902e187c480df75c139bf7f3c3658874c47b19ee03825"
         }
     ],
     "hashType": "sha256"

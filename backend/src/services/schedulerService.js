@@ -2,6 +2,7 @@ import cron from 'node-cron';
 import labelStudioService from './labelStudio.js';
 import { extractClassMetrics, addMetricsToHistory } from './metricsExtractor.js';
 import { checkProjectTrainingReadiness, addNotification } from './notificationService.js';
+import { storeSnapshot } from './timeSeriesService.js';
 import storage from '../storage/fileStorage.js';
 import { CLASS_CATEGORIES } from '../utils/constants.js';
 import { detectXrayType } from '../utils/xrayDetector.js';
@@ -28,6 +29,22 @@ class SchedulerService {
                 console.warn('Could not auto-start scheduler:', error.message);
             }
         }
+    }
+
+    /**
+     * Calculate next run time based on current time and schedule
+     */
+    calculateNextRun(hour, minute) {
+        const now = new Date();
+        const nextRun = new Date();
+        nextRun.setHours(hour, minute, 0, 0);
+
+        // If the scheduled time has already passed today, schedule for tomorrow
+        if (nextRun <= now) {
+            nextRun.setDate(nextRun.getDate() + 1);
+        }
+
+        return nextRun.toISOString();
     }
 
     /**
@@ -67,9 +84,15 @@ class SchedulerService {
                 }
             }
 
-            // Update last run time
+            // Store time series snapshot for today
+            await storage.appendSchedulerLog('Creating daily time series snapshot...');
+            await storeSnapshot();
+            await storage.appendSchedulerLog('  ✓ Time series snapshot created');
+
+            // Update last run time and calculate next run
             const config = await storage.loadSchedulerConfig();
             config.last_run = new Date().toISOString();
+            config.next_run = this.calculateNextRun(config.hour || 2, config.minute || 8);
             await storage.saveSchedulerConfig(config);
 
             await storage.appendSchedulerLog('=== Scheduled refresh completed successfully ===\n');
@@ -102,15 +125,7 @@ class SchedulerService {
         config.enabled = true;
         config.hour = hour;
         config.minute = minute;
-
-        // Calculate next run
-        const now = new Date();
-        const nextRun = new Date();
-        nextRun.setHours(hour, minute, 0, 0);
-        if (nextRun <= now) {
-            nextRun.setDate(nextRun.getDate() + 1);
-        }
-        config.next_run = nextRun.toISOString();
+        config.next_run = this.calculateNextRun(hour, minute);
 
         await storage.saveSchedulerConfig(config);
         await storage.appendSchedulerLog(`Scheduler started: Daily refresh at ${hour}:${String(minute).padStart(2, '0')}`);
