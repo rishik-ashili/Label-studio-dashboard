@@ -30,11 +30,10 @@ const GrowthIndicator = ({ current, checkpoint, kaggle, growth, growthPct, check
                 <p className="text-base sm:text-lg md:text-xl mb-1">
                     images ({growthPct >= 0 ? '+' : ''}{growthPct.toFixed(1)}% {checkpointInfo})
                 </p>
-                {checkpointDate && (
-                    <p className="text-xs sm:text-sm opacity-80 mb-2">
-                        Latest checkpoint: {formatCheckpointDate(checkpointDate)}
-                    </p>
-                )}
+                <p className="text-xs sm:text-sm opacity-80 mb-2">
+                    Baseline: {formatNumber(checkpoint)} images
+                    {checkpointDate && ` (as of ${formatCheckpointDate(checkpointDate)})`}
+                </p>
                 <div className="text-sm sm:text-base md:text-lg opacity-90 flex flex-col sm:flex-row sm:gap-2">
                     <span><strong>Current:</strong> {formatNumber(current)}</span>
                     <span className="hidden sm:inline">|</span>

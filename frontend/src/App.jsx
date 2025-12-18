@@ -88,10 +88,12 @@ function App() {
             });
         }
 
-        // 3. Checkpoint Total - class checkpoints replace project checkpoints for their specific class-modality
+        // 3. Checkpoint Total - sum both class and project checkpoints
         if (checkpoints) {
             let classCheckpointTotal = 0;
             let projectCheckpointTotal = 0;
+            let classCheckpointDate = null;
+            let projectCheckpointDate = null;
 
             // Track which class-modality combinations have class checkpoints
             const classCheckpointKeys = new Set();
@@ -107,15 +109,14 @@ function App() {
 
                     if (cp.marked_at) {
                         const cpDate = new Date(cp.marked_at);
-                        if (!latestCheckpointDate || cpDate > latestCheckpointDate) {
-                            latestCheckpointDate = cpDate;
+                        if (!classCheckpointDate || cpDate > classCheckpointDate) {
+                            classCheckpointDate = cpDate;
                         }
                     }
                 });
             }
 
             // Then add ALL project checkpoints (they cover all modalities combined)
-            // Class checkpoints are MORE specific, so they override project data implicitly
             if (checkpoints.projects) {
                 Object.values(checkpoints.projects).forEach(cp => {
                     const metrics = cp.metrics || {};
@@ -128,8 +129,8 @@ function App() {
 
                     if (cp.marked_at) {
                         const cpDate = new Date(cp.marked_at);
-                        if (!latestCheckpointDate || cpDate > latestCheckpointDate) {
-                            latestCheckpointDate = cpDate;
+                        if (!projectCheckpointDate || cpDate > projectCheckpointDate) {
+                            projectCheckpointDate = cpDate;
                         }
                     }
                 });
@@ -137,6 +138,15 @@ function App() {
 
             // Sum both class and project checkpoints
             checkpointTotal = classCheckpointTotal + projectCheckpointTotal;
+
+            // Use date from the dominant checkpoint source
+            if (projectCheckpointTotal > classCheckpointTotal) {
+                latestCheckpointDate = projectCheckpointDate;
+            } else if (classCheckpointTotal > 0) {
+                latestCheckpointDate = classCheckpointDate;
+            } else {
+                latestCheckpointDate = projectCheckpointDate;
+            }
         }
 
         const growth = currentTotal - checkpointTotal;
