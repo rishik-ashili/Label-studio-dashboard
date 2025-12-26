@@ -6,34 +6,39 @@
     "auditLog": "/home/ashilirishik/Label-studio-dashboard/backend/logs/.76dae64530fc84e7437146af922fa35a40b69d43-audit.json",
     "files": [
         {
-            "date": 1765599532800,
-            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-13.log",
-            "hash": "3599edf4cd491ebe8cd2578183e73e674f72f2cbf3f8ed796a11232aa3ede46a"
+            "date": 1766190135917,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-20.log",
+            "hash": "8660a3567538df44a34889a01f3d2909107e8c9657766fbe7b9ed27fd4679329"
         },
         {
-            "date": 1765670555159,
-            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-14.log",
-            "hash": "d7081e54133e7c9f53a6f843e9493b9d4b324bbab857bcd7f2b350a59a6a08ac"
+            "date": 1766277201734,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-21.log",
+            "hash": "4dc6e3f6b28912aede2562a01ebfd761b48e0f34172077bfbfe54d5054611315"
         },
         {
-            "date": 1765758349304,
-            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-15.log",
-            "hash": "ab68629243a2f407086fa5b4cfc669ad45310e1869999a04a72e076b11f39dd7"
+            "date": 1766361817947,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-22.log",
+            "hash": "16ff6a9d6bbf60b0d69751e199b253ffd97794ae416456e87d9dacc186ff0b1f"
         },
         {
-            "date": 1765843788095,
-            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-16.log",
-            "hash": "c37586801f42cc00457e7eb679d16349fe91ee941834e5ce8d14eef68509ff8a"
+            "date": 1766448597655,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-23.log",
+            "hash": "2f5142ee12480441db8c15e806ed6a6dd8c191d2db2047d09a2ad2a68949aa2e"
         },
         {
-            "date": 1765932475318,
-            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-17.log",
-            "hash": "e88666295e9f2f2f215fddcb989a9311e979c1201e9baf29b44285a2e76491d4"
+            "date": 1766535157915,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-24.log",
+            "hash": "8ad2f727f53e90efb3516efb6be35ccef00e644456afe42f87985a14c948ca94"
         },
         {
-            "date": 1766016012794,
-            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-18.log",
-            "hash": "a45103cce19ab175efb902e187c480df75c139bf7f3c3658874c47b19ee03825"
+            "date": 1766621450647,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-25.log",
+            "hash": "c412bcf11e3609afc3c463e5f8cb3e8454f01572aca7f8f5af946539c72ff42c"
+        },
+        {
+            "date": 1766709068805,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/application-2025-12-26.log",
+            "hash": "dc4c4ffe8ba51468fdae5c2ca4100dbb81a2f3976a22d7a99484470e88049014"
         }
     ],
     "hashType": "sha256"

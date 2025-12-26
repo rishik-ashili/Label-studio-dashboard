@@ -19,6 +19,11 @@
             "date": 1766059320950,
             "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/error-2025-12-18.log",
             "hash": "e38cbdc2f8a8815cab283601d6a0632a26c54d8275723c015f12502557d86103"
+        },
+        {
+            "date": 1766113420438,
+            "name": "/home/ashilirishik/Label-studio-dashboard/backend/logs/error-2025-12-19.log",
+            "hash": "68e1e4b35192181250cd3c7a4c4cacfd4bfe040fd533d3bc2fcd40cc0861d2cd"
         }
     ],
     "hashType": "sha256"
